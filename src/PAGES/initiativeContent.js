@@ -1,8 +1,9 @@
 import { biogasLearningNavigation } from "./biogasLearningContent.js";
+import { assetUrl } from "../utils/assetUrl";
 
-const ruralPortrait = "/WhatsApp%20Image%202026-11-08%20at%203.21.40%20PM.jpeg";
-const biogasPlant = "/WhatsApp%20Image%202026-11-08%20at%203.21.33%20PM.jpeg";
-const kitchenPhoto = "/WhatsApp%20Image%202026-11-08%20at%203.21.32%20PM.jpeg";
+const ruralPortrait = assetUrl("/WhatsApp%20Image%202026-11-08%20at%203.21.40%20PM.jpeg");
+const biogasPlant = assetUrl("/WhatsApp%20Image%202026-11-08%20at%203.21.33%20PM.jpeg");
+const kitchenPhoto = assetUrl("/WhatsApp%20Image%202026-11-08%20at%203.21.32%20PM.jpeg");
 const learningPhoto = "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1800&q=85";
 const womenLearningPhoto = "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&w=1000&q=85";
 

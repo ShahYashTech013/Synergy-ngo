@@ -15,6 +15,7 @@ import {
   Zap,
 } from "lucide-react";
 import { paymentService } from "../services/payments/paymentService.js";
+import { assetUrl } from "../utils/assetUrl";
 import "./PaymentCheckout.css";
 
 const POPULAR_BANKS = [
@@ -125,7 +126,7 @@ export default function PaymentCheckout({
             <div>
               <div className="payment-summary-brand">
                 <img
-                  src="/synergy-organization-logo.svg"
+                  src={assetUrl("/synergy-organization-logo.svg")}
                   alt="Synergy Organization"
                   className="payment-summary-logo"
                 />

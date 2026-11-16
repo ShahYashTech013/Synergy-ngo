@@ -15,6 +15,7 @@ import {
 import { userAuthService } from "../services/auth/userAuthService.js";
 import { paymentService } from "../services/payments/paymentService.js";
 import PaymentCheckout from "../COMPONENT/PaymentCheckout.jsx";
+import { assetUrl } from "../utils/assetUrl";
 import "../COMPONENT/DonorAuth.css";
 
 export default function Donate({
@@ -105,7 +106,7 @@ export default function Donate({
                 <div className="donor-auth-brand-content">
                   <div>
                     <div className="donor-auth-logo-badge">
-                      <img src="/synergy-organization-logo.svg" alt="Synergy Organization" />
+                      <img src={assetUrl("/synergy-organization-logo.svg")} alt="Synergy Organization" />
                     </div>
 
                     <div className="donor-auth-badge">

@@ -19,6 +19,7 @@ import { ArrowDown, ArrowRight, Flame, Recycle, Sprout, ClipboardList, UsersRoun
 import Footer from "./COMPONENT/Footer.jsx";
 import "./App.css";
 import "./appearance.css";
+import assetUrl, { BASE_PATH } from "./utils/assetUrl.js";
 import Navbar from "./COMPONENT/Navbar.jsx";
 import AnimatedText, { AnimatedCounter } from "./COMPONENT/AnimatedText.jsx";
 import PublicVideoSection from "./COMPONENT/PublicVideoSection.jsx";
@@ -75,13 +76,13 @@ const legacyInitiativeRedirects = {
 const pageKeysByPath = Object.fromEntries(
   Object.entries(pageRoutes).map(([page, path]) => [path, page]),
 );
-const HERO_BACKGROUND_VIDEO_URL = "/synergy%20vedio.mp4";
-const HERO_BACKGROUND_POSTER = "/WhatsApp%20Image%202026-11-08%20at%203.21.33%20PM.jpeg";
+const HERO_BACKGROUND_VIDEO_URL = assetUrl("/synergy%20vedio.mp4");
+const HERO_BACKGROUND_POSTER = assetUrl("/WhatsApp%20Image%202026-11-08%20at%203.21.33%20PM.jpeg");
 const movedGalleryItems = [
-  { id: "behind-work-biogas-1", category: "Behind the Work", caption: "Brick dome digester field installation", location: "", date: "", image: "/images/volunteers/BIO%20GAS%20INSTALL1.jpeg" },
-  { id: "behind-work-biogas-2", category: "Behind the Work", caption: "Community members at a biogas installation site", location: "", date: "", image: "/images/volunteers/IMG3BIOGAS.jpeg" },
-  { id: "behind-work-biogas-3", category: "Behind the Work", caption: "Resident beside a flexible biogas digester", location: "", date: "", image: "/images/volunteers/IMG2%20BIO%20GAS.jpeg" },
-  { id: "behind-work-rural", category: "Behind the Work", caption: "Rural woman carrying gathered firewood", location: "", date: "", image: "/images/volunteers/WhatsApp%20Image%202026-11-08%20at%203.21.40%20PM.jpeg" },
+  { id: "behind-work-biogas-1", category: "Behind the Work", caption: "Brick dome digester field installation", location: "", date: "", image: assetUrl("/images/volunteers/BIO%20GAS%20INSTALL1.jpeg") },
+  { id: "behind-work-biogas-2", category: "Behind the Work", caption: "Community members at a biogas installation site", location: "", date: "", image: assetUrl("/images/volunteers/IMG3BIOGAS.jpeg") },
+  { id: "behind-work-biogas-3", category: "Behind the Work", caption: "Resident beside a flexible biogas digester", location: "", date: "", image: assetUrl("/images/volunteers/IMG2%20BIO%20GAS.jpeg") },
+  { id: "behind-work-rural", category: "Behind the Work", caption: "Rural woman carrying gathered firewood", location: "", date: "", image: assetUrl("/images/volunteers/WhatsApp%20Image%202026-11-08%20at%203.21.40%20PM.jpeg") },
 ];
 function getGalleryImageName(image) {
   const imagePath = String(image || "").split(/[?#]/)[0];
@@ -102,8 +103,17 @@ function safeExternalUrl(value) {
   }
 }
 
+function getAppPath() {
+  const fullPath = window.location.pathname.replace(/\/+$/, "") || "/";
+  if (BASE_PATH && fullPath.startsWith(BASE_PATH)) {
+    const relative = fullPath.slice(BASE_PATH.length).replace(/\/+$/, "");
+    return relative || "/";
+  }
+  return fullPath;
+}
+
 function getPageFromLocation() {
-  const path = window.location.pathname.replace(/\/+$/, "") || "/";
+  const path = getAppPath();
   if (legacyInitiativeRedirects[path]) {
     return "home";
   }
@@ -111,7 +121,7 @@ function getPageFromLocation() {
 }
 
 function getInitialAnchor() {
-  const path = window.location.pathname.replace(/\/+$/, "") || "/";
+  const path = getAppPath();
   if (legacyInitiativeRedirects[path]) {
     return legacyInitiativeRedirects[path];
   }
@@ -267,10 +277,10 @@ function PublicWebsite() {
     : fallbackImpactStats;
 
   const installationProjects = [
-    { id: "biogas-photo-1", category: "Biogas Installation", title: "Brick-Dome Digester Construction", description: "The photograph shows a brick dome digester under construction, with the installation pit and masonry visible.", image: "/images/biogas/BIO GAS INSTALL1.jpeg", images: ["/images/biogas/BIO GAS INSTALL1.jpeg"], imageAlt: "Brick dome biogas digester under construction at a rural site" },
-    { id: "biogas-photo-2", category: "Biogas Installation", title: "Household Flexible Digester", description: "A resident stands beside a flexible biogas digester and its connected equipment at a household site.", image: "/images/biogas/IMG2 BIO GAS.jpeg", images: ["/images/biogas/IMG2 BIO GAS.jpeg"], imageAlt: "Resident beside a flexible biogas digester and blue equipment drum" },
-    { id: "biogas-photo-3", category: "Biogas Installation", title: "Brick-Dome Digester at an Installation Site", description: "The photograph shows a brick dome digester under construction with workers and community members at the site.", image: "/images/biogas/IMG3BIOGAS.jpeg", images: ["/images/biogas/IMG3BIOGAS.jpeg"], imageAlt: "Workers and community members beside a brick dome digester under construction" },
-    { id: "biogas-photo-4", category: "Biogas Installation", title: "Flexible Digester at a Home Site", description: "Two residents stand beside a flexible biogas digester in a garden setting.", image: "/images/biogas/BIOGASIMG4.jpeg", images: ["/images/biogas/BIOGASIMG4.jpeg"], imageAlt: "Two residents beside a flexible biogas digester installed in a garden" },
+    { id: "biogas-photo-1", category: "Biogas Installation", title: "Brick-Dome Digester Construction", description: "The photograph shows a brick dome digester under construction, with the installation pit and masonry visible.", image: assetUrl("/images/biogas/BIO GAS INSTALL1.jpeg"), images: [assetUrl("/images/biogas/BIO GAS INSTALL1.jpeg")], imageAlt: "Brick dome biogas digester under construction at a rural site" },
+    { id: "biogas-photo-2", category: "Biogas Installation", title: "Household Flexible Digester", description: "A resident stands beside a flexible biogas digester and its connected equipment at a household site.", image: assetUrl("/images/biogas/IMG2 BIO GAS.jpeg"), images: [assetUrl("/images/biogas/IMG2 BIO GAS.jpeg")], imageAlt: "Resident beside a flexible biogas digester and blue equipment drum" },
+    { id: "biogas-photo-3", category: "Biogas Installation", title: "Brick-Dome Digester at an Installation Site", description: "The photograph shows a brick dome digester under construction with workers and community members at the site.", image: assetUrl("/images/biogas/IMG3BIOGAS.jpeg"), images: [assetUrl("/images/biogas/IMG3BIOGAS.jpeg")], imageAlt: "Workers and community members beside a brick dome digester under construction" },
+    { id: "biogas-photo-4", category: "Biogas Installation", title: "Flexible Digester at a Home Site", description: "Two residents stand beside a flexible biogas digester in a garden setting.", image: assetUrl("/images/biogas/BIOGASIMG4.jpeg"), images: [assetUrl("/images/biogas/BIOGASIMG4.jpeg")], imageAlt: "Two residents beside a flexible biogas digester installed in a garden" },
   ];
   const installationCategories = ["All Installations", ...new Set(installationProjects.map((project) => project.category).filter(Boolean))];
   const visibleInstallationProjects = installationFilter === "All Installations"
@@ -458,10 +468,11 @@ function PublicWebsite() {
   }, []);
 
   const navigatePage = (page, anchor) => {
-    const path = pageRoutes[page] || "/";
-    const fullPath = anchor ? `${path === "/" ? "" : path}/#${anchor}` : path;
-    if (window.location.pathname !== path || window.location.hash !== (anchor ? `#${anchor}` : "")) {
-      window.history.pushState({ page, anchor }, "", fullPath || "/");
+    const routePath = pageRoutes[page] || "/";
+    const fullAppPath = `${BASE_PATH}${routePath === "/" ? "" : routePath}` || "/";
+    const fullUrl = anchor ? `${fullAppPath}#${anchor}` : fullAppPath;
+    if (window.location.pathname !== fullAppPath || window.location.hash !== (anchor ? `#${anchor}` : "")) {
+      window.history.pushState({ page, anchor }, "", fullUrl);
     }
     setActivePage(page);
     setSelectedProgramme(null);
@@ -642,7 +653,7 @@ function PublicWebsite() {
                   <div className="biogas-process-image-column">
                     <figure className="biogas-installation-card">
                       <div className="biogas-process-image-frame">
-                        <img src="/WhatsApp%20Image%202026-11-08%20at%203.21.33%20PM.jpeg" alt="HomeBiogas digester installed in a garden beside a rural home" className="biogas-feature-photo" loading="lazy" />
+                        <img src={assetUrl("/WhatsApp%20Image%202026-11-08%20at%203.21.33%20PM.jpeg")} alt="HomeBiogas digester installed in a garden beside a rural home" className="biogas-feature-photo" loading="lazy" />
                       </div>
                       <figcaption>
                         <span>Real Installation</span>

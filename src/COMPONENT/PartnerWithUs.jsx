@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { X, CheckCircle2, ArrowRight } from "lucide-react";
 import AnimatedText from "./AnimatedText.jsx";
 import { enquiryRepository } from "../services/repositories/enquiryRepository.js";
+import { assetUrl } from "../utils/assetUrl";
 import "./PartnerWithUs.css";
 
 const partnershipOptions = [
@@ -18,7 +19,7 @@ const partnerCardsData = [
     title: "Corporate Partnerships",
     description:
       "Collaborate with Synergy Organization on ESG alignment, carbon-reduction milestones, and corporate environmental leadership through scalable clean cooking infrastructure.",
-    image: "/images/biogas/BIOGASIMG4.jpeg",
+    image: assetUrl("/images/biogas/BIOGASIMG4.jpeg"),
     imageAlt: "Corporate and institutional partners exploring biogas technology",
     buttonText: "Explore Partnership",
   },
@@ -29,7 +30,7 @@ const partnerCardsData = [
     title: "CSR Partnerships",
     description:
       "Channel Schedule VII CSR capital to fund village biogas plants, eliminate indoor smoke for vulnerable families, and empower women with sustainable livelihood training.",
-    image: "/images/biogas/BIO GAS INSTALL1.jpeg",
+    image: assetUrl("/images/biogas/BIO GAS INSTALL1.jpeg"),
     imageAlt: "Field construction of clean cooking biogas digesters funded through CSR",
     buttonText: "Discuss CSR",
   },
@@ -40,7 +41,7 @@ const partnerCardsData = [
     title: "Community Partnerships",
     description:
       "Mobilize Gram Panchayats, rural cooperatives, self-help groups, and youth leaders to establish community-owned clean-energy digesters and organic farming clusters.",
-    image: "/images/biogas/IMG3BIOGAS.jpeg",
+    image: assetUrl("/images/biogas/IMG3BIOGAS.jpeg"),
     imageAlt: "Community members and local leaders gathered at a rural biogas installation",
     buttonText: "Be a Part of Us",
   },

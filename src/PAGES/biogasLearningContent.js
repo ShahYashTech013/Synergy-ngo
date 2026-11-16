@@ -1,6 +1,8 @@
-const biogasPlant = "/WhatsApp%20Image%202026-11-08%20at%203.21.33%20PM.jpeg";
-const ruralLandscape = "/WhatsApp%20Image%202026-11-08%20at%203.21.40%20PM.jpeg";
-const kitchen = "/WhatsApp%20Image%202026-11-08%20at%203.21.32%20PM.jpeg";
+import { assetUrl } from "../utils/assetUrl";
+
+const biogasPlant = assetUrl("/WhatsApp%20Image%202026-11-08%20at%203.21.33%20PM.jpeg");
+const ruralLandscape = assetUrl("/WhatsApp%20Image%202026-11-08%20at%203.21.40%20PM.jpeg");
+const kitchen = assetUrl("/WhatsApp%20Image%202026-11-08%20at%203.21.32%20PM.jpeg");
 const agriculture = "https://images.unsplash.com/photo-1500937386664-56d1dfef3854?auto=format&fit=crop&w=1600&q=85";
 const renewableLandscape = "https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?auto=format&fit=crop&w=1800&q=85";
 const windEnergy = "https://images.unsplash.com/photo-1466611653911-95081537e5b7?auto=format&fit=crop&w=1800&q=85";

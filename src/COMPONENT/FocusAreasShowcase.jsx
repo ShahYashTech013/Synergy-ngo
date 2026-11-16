@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { ArrowRight } from "lucide-react";
 import AnimatedText from "./AnimatedText.jsx";
+import { assetUrl } from "../utils/assetUrl";
 import "./FocusAreasShowcase.css";
 
 const focusAreas = [
@@ -18,7 +19,7 @@ const focusAreas = [
       ],
       conclusion: "Synergy Organisation's Biogas for Clean Energy initiative demonstrates how innovative, sustainable technologies can transform rural communities. By providing access to clean energy and promoting organic farming practices, the programme enhances health, livelihoods, and ecological well-being simultaneously. Through continued awareness, training, and community engagement, Synergy Organisation strives to create healthier, self-reliant, and eco-conscious communities, laying the foundation for a cleaner, greener, and more sustainable future for generations to come.",
     },
-    image: "/images/biogas/IMG2%20BIO%20GAS.jpeg",
+    image: assetUrl("/images/biogas/IMG2%20BIO%20GAS.jpeg"),
     alt: "Resident beside a flexible biogas digester and connected equipment",
     page: "initiative-biogas-clean-energy",
     tone: "energy",
@@ -83,7 +84,7 @@ const focusAreas = [
       ],
       conclusion: "Synergy Organisation's Women Empowerment Programs are centered on creating lasting empowerment by equipping women with the skills, knowledge, and confidence needed to shape their own futures. By strengthening economic independence, leadership capacity, and social awareness, the initiatives contribute to improved family well-being, stronger communities, and greater gender equality. Through sustained support and inclusive development efforts, Synergy Organisation remains committed to empowering women as catalysts of positive and sustainable change.",
     },
-    image: "/WhatsApp%20Image%202026-11-08%20at%203.21.40%20PM.jpeg",
+    image: assetUrl("/WhatsApp%20Image%202026-11-08%20at%203.21.40%20PM.jpeg"),
     alt: "A woman carrying a bundle of gathered firewood outdoors",
     page: "initiative-women-empowerment",
     tone: "women",

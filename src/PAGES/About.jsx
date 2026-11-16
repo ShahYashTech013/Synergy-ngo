@@ -11,6 +11,7 @@ import {
   Zap,
 } from "lucide-react";
 import AnimatedText from "../COMPONENT/AnimatedText.jsx";
+import { assetUrl } from "../utils/assetUrl";
 import "./About.css";
 
 const visionMissionProgrammes = [
@@ -28,7 +29,7 @@ const visionMissionProgrammes = [
     title: "Women Empowerment",
     badge: "Livelihoods & SHGs",
     description: "Empowering rural women through Self-Help Groups (SHGs), vocational tailoring and handicraft training, financial literacy, and healthy smoke-free homes.",
-    image: "/WhatsApp%20Image%202026-11-08%20at%203.21.40%20PM.jpeg",
+    image: assetUrl("/WhatsApp%20Image%202026-11-08%20at%203.21.40%20PM.jpeg"),
     page: "initiative-women-empowerment",
     icon: UsersRound,
   },
@@ -37,7 +38,7 @@ const visionMissionProgrammes = [
     title: "Biogas & Sustainable Energy",
     badge: "Clean Energy",
     description: "Setting up household biogas plants using daily cattle dung and wet waste to deliver smoke-free cooking fuel and organic bio-fertiliser for farming.",
-    image: "/images/story/IMG3BIOGAS.jpeg",
+    image: assetUrl("/images/story/IMG3BIOGAS.jpeg"),
     page: "initiative-biogas-clean-energy",
     icon: Zap,
   },
@@ -190,7 +191,7 @@ export default function About({ onNavigate }) {
         <div className="about-story__visual">
           <div className="about-image-frame about-image-frame--story">
             <img
-              src="/WhatsApp%20Image%202026-11-08%20at%203.21.40%20PM.jpeg"
+              src={assetUrl("/WhatsApp%20Image%202026-11-08%20at%203.21.40%20PM.jpeg")}
               alt="A woman carrying a bundle of gathered firewood outdoors"
               loading="lazy"
             />
@@ -278,7 +279,7 @@ export default function About({ onNavigate }) {
         <div className="about-purpose__visual">
           <div className="about-image-frame about-image-frame--purpose">
             <img
-              src="/WhatsApp%20Image%202026-11-08%20at%203.21.33%20PM.jpeg"
+              src={assetUrl("/WhatsApp%20Image%202026-11-08%20at%203.21.33%20PM.jpeg")}
               alt="HomeBiogas branded flexible digester installed in a garden"
               loading="lazy"
             />

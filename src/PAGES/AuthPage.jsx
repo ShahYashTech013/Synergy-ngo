@@ -13,6 +13,7 @@ import {
   User,
 } from "lucide-react";
 import { userAuthService } from "../services/auth/userAuthService.js";
+import { assetUrl } from "../utils/assetUrl";
 import "../COMPONENT/DonorAuth.css";
 
 export default function AuthPage({ mode, onNavigate }) {
@@ -78,7 +79,7 @@ export default function AuthPage({ mode, onNavigate }) {
             <div className="donor-auth-brand-content">
               <div>
                 <div className="donor-auth-logo-badge">
-                  <img src="/synergy-organization-logo.svg" alt="Synergy Organization" />
+                  <img src={assetUrl("/synergy-organization-logo.svg")} alt="Synergy Organization" />
                 </div>
 
                 <div className="donor-auth-badge">

@@ -1,11 +1,12 @@
 import { initialProgrammes } from "../../DATA/initialData.js";
 import { createRepository } from "./mockRepository.js";
+import { assetUrl } from "../../utils/assetUrl.js";
 
 const initiativeContent = {
   "biogas-clean-energy": {
     category: "FLAGSHIP PROGRAMME",
     description: "Promoting household biogas solutions in rural Karnataka and Maharashtra through organic waste management and renewable energy.",
-    image: "/WhatsApp%20Image%202026-11-08%20at%203.21.33%20PM.jpeg",
+    image: assetUrl("/WhatsApp%20Image%202026-11-08%20at%203.21.33%20PM.jpeg"),
     imageAlt: "HomeBiogas branded flexible digester installed in a garden.",
     imageIsIllustrative: false,
   },
@@ -26,7 +27,7 @@ const initiativeContent = {
   "women-empowerment": {
     category: "LIVELIHOODS & SHGs",
     description: "Supporting rural women's livelihoods through skill development, self-help groups and sustainable income opportunities.",
-    image: "/WhatsApp%20Image%202026-11-08%20at%203.21.40%20PM.jpeg",
+    image: assetUrl("/WhatsApp%20Image%202026-11-08%20at%203.21.40%20PM.jpeg"),
     imageAlt: "A woman carrying a bundle of gathered firewood outdoors.",
     imageIsIllustrative: false,
   },

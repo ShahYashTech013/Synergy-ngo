@@ -1,3 +1,5 @@
+import { assetUrl } from "../utils/assetUrl";
+
 export const initialProgrammes = [
   {
     id: "biogas-clean-energy",
@@ -81,9 +83,9 @@ export const initialBiogasSteps = [
 ];
 
 export const initialGalleryItems = [
-  { id: 1, category: "Biogas installation", caption: "HomeBiogas branded flexible digester in a garden", location: "", date: "", image: "/WhatsApp%20Image%202026-11-08%20at%203.21.33%20PM.jpeg" },
-  { id: 2, category: "Household cooking", caption: "Kitchen stove with two gas burners lit; LPG cylinder visible", location: "", date: "", image: "/WhatsApp%20Image%202026-11-08%20at%203.21.32%20PM.jpeg" },
-  { id: 3, category: "Rural context", caption: "A woman carrying a bundle of gathered firewood outdoors", location: "", date: "", image: "/WhatsApp%20Image%202026-11-08%20at%203.21.40%20PM.jpeg" },
+  { id: 1, category: "Biogas installation", caption: "HomeBiogas branded flexible digester in a garden", location: "", date: "", image: assetUrl("/WhatsApp%20Image%202026-11-08%20at%203.21.33%20PM.jpeg") },
+  { id: 2, category: "Household cooking", caption: "Kitchen stove with two gas burners lit; LPG cylinder visible", location: "", date: "", image: assetUrl("/WhatsApp%20Image%202026-11-08%20at%203.21.32%20PM.jpeg") },
+  { id: 3, category: "Rural context", caption: "A woman carrying a bundle of gathered firewood outdoors", location: "", date: "", image: assetUrl("/WhatsApp%20Image%202026-11-08%20at%203.21.40%20PM.jpeg") },
 ];
 
 export const initialDonations = [

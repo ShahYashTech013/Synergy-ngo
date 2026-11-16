@@ -10,6 +10,7 @@ import {
   UsersRound,
 } from "lucide-react";
 import AnimatedText from "../COMPONENT/AnimatedText.jsx";
+import { assetUrl } from "../utils/assetUrl";
 import "./WhatWeDo.css";
 
 const focusAreas = [
@@ -19,7 +20,7 @@ const focusAreas = [
     title: "Biogas & Clean Energy",
     heading: "Turning Natural Resources Into Clean Energy.",
     description: "Promoting non-conventional energy awareness and sustainable energy solutions that can support rural households and communities.",
-    image: "/WhatsApp%20Image%202026-11-08%20at%203.21.33%20PM.jpeg",
+    image: assetUrl("/WhatsApp%20Image%202026-11-08%20at%203.21.33%20PM.jpeg"),
     alt: "HomeBiogas branded flexible digester installed in a garden",
     imageNote: "Biogas installation / supplied photograph",
     icon: Flame,
@@ -31,7 +32,7 @@ const focusAreas = [
     title: "Smoke-Free Homes",
     heading: "Working Towards Healthier, Smoke-Free Homes.",
     description: "Encouraging cleaner household energy and greater awareness of healthier cooking environments for rural families.",
-    image: "/WhatsApp%20Image%202026-11-08%20at%203.21.32%20PM.jpeg",
+    image: assetUrl("/WhatsApp%20Image%202026-11-08%20at%203.21.32%20PM.jpeg"),
     alt: "Two lit gas burners on a kitchen stove, with an LPG cylinder visible at right",
     imageNote: "Supplied kitchen photograph; LPG stove, not biogas",
     icon: HeartPulse,
@@ -43,7 +44,7 @@ const focusAreas = [
     title: "Women Empowerment",
     heading: "Supporting Women. Strengthening Communities.",
     description: "Supporting women's empowerment as part of a more inclusive and sustainable rural future.",
-    image: "/WhatsApp%20Image%202026-11-08%20at%203.21.40%20PM.jpeg",
+    image: assetUrl("/WhatsApp%20Image%202026-11-08%20at%203.21.40%20PM.jpeg"),
     alt: "A woman carrying a bundle of gathered firewood outdoors",
     imageNote: "Rural context / supplied photograph",
     icon: HandHeart,
@@ -119,21 +120,21 @@ const widerFocus = [
 
 const galleryImages = [
   {
-    src: "/WhatsApp%20Image%202026-11-08%20at%203.21.33%20PM.jpeg",
+    src: assetUrl("/WhatsApp%20Image%202026-11-08%20at%203.21.33%20PM.jpeg"),
     alt: "HomeBiogas branded flexible digester installed in a garden",
     caption: "Biogas & clean energy",
     note: "Supplied photograph",
     layout: "plant",
   },
   {
-    src: "/WhatsApp%20Image%202026-11-08%20at%203.21.40%20PM.jpeg",
+    src: assetUrl("/WhatsApp%20Image%202026-11-08%20at%203.21.40%20PM.jpeg"),
     alt: "A woman carrying a bundle of gathered firewood outdoors",
     caption: "Rural communities",
     note: "Supplied photograph",
     layout: "rural",
   },
   {
-    src: "/WhatsApp%20Image%202026-11-08%20at%203.21.32%20PM.jpeg",
+    src: assetUrl("/WhatsApp%20Image%202026-11-08%20at%203.21.32%20PM.jpeg"),
     alt: "Two lit gas burners on a kitchen stove, with an LPG cylinder visible at right",
     caption: "Household cooking",
     note: "Supplied kitchen photograph; LPG stove, not biogas",
@@ -225,7 +226,7 @@ function WorkIntroduction() {
       <div className="what-intro__visual">
         <div className="what-intro__frame">
           <img
-            src="/WhatsApp%20Image%202026-11-08%20at%203.21.40%20PM.jpeg"
+            src={assetUrl("/WhatsApp%20Image%202026-11-08%20at%203.21.40%20PM.jpeg")}
             alt="A woman carrying a bundle of gathered firewood outdoors"
             loading="lazy"
           />

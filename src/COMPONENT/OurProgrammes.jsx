@@ -1,5 +1,6 @@
 import React from "react";
 import AnimatedText from "./AnimatedText.jsx";
+import { assetUrl } from "../utils/assetUrl";
 import "./OurProgrammes.css";
 
 export const fourProgrammesData = [
@@ -21,7 +22,7 @@ export const fourProgrammesData = [
     badge: "Livelihoods & SHGs",
     shortDesc:
       "Supporting rural women through Self-Help Groups (SHGs), vocational tailoring and handicraft training, financial literacy, and smoke-free healthy household environments.",
-    image: "/WhatsApp%20Image%202026-11-08%20at%203.21.40%20PM.jpeg",
+    image: assetUrl("/WhatsApp%20Image%202026-11-08%20at%203.21.40%20PM.jpeg"),
     imageAlt: "Rural women empowerment and livelihoods training",
     page: "initiative-women-empowerment",
     focus: "Self-Help Groups · Micro-Enterprise · Smoke-Free Living",
@@ -32,7 +33,7 @@ export const fourProgrammesData = [
     badge: "Flagship Clean Energy",
     shortDesc:
       "Deploying household biogas plants using daily cattle dung and wet kitchen waste, delivering clean cooking fuel and organic bio-slurry for chemical-free farming.",
-    image: "/images/story/IMG3BIOGAS.jpeg",
+    image: assetUrl("/images/story/IMG3BIOGAS.jpeg"),
     imageAlt: "Rural household biogas digester installation",
     page: "initiative-biogas-clean-energy",
     focus: "Smoke-Free Kitchens · Organic Bio-Slurry · Renewable Energy",

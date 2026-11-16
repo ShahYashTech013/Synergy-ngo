@@ -13,6 +13,7 @@ import {
   UsersRound,
   X,
 } from "lucide-react";
+import { assetUrl } from "../utils/assetUrl";
 import "./Navbar.css";
 
 const navigationItems = [
@@ -94,7 +95,7 @@ function Brand({ onNavigate }) {
     >
       <img
         className="synergy-brand__logo"
-        src="/synergy-organization-logo.svg"
+        src={assetUrl("/synergy-organization-logo.svg")}
         alt="Synergy Organization"
       />
     </a>
