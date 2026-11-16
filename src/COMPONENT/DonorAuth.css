@@ -1,0 +1,545 @@
+/* ==========================================================================
+   SYNERGY ORGANIZATION - PREMIUM DONOR AUTH UI STYLES
+   ========================================================================== */
+
+.donor-auth-section {
+  width: 100%;
+  padding: 48px 16px;
+  background-color: #f5f1e7;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: calc(100vh - 120px);
+}
+
+.donor-auth-container {
+  width: 100%;
+  max-width: 1060px;
+  margin: 0 auto;
+}
+
+.donor-auth-card {
+  display: flex;
+  flex-direction: row;
+  background: #ffffff;
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 24px 60px -12px rgba(32, 60, 43, 0.16), 0 2px 8px -2px rgba(32, 60, 43, 0.08);
+  border: 1px solid rgba(32, 60, 43, 0.08);
+  transition: box-shadow 0.3s ease;
+}
+
+/* --------------------------------------------------------------------------
+   LEFT COLUMN - BRANDING & ENVIRONMENTAL IMAGE
+   -------------------------------------------------------------------------- */
+.donor-auth-brand-side {
+  flex: 0 0 44%;
+  position: relative;
+  background-color: #203C2B;
+  background-image: url('/images/biogas/BIO GAS INSTALL1.jpeg');
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 48px 40px;
+  color: #ffffff;
+  overflow: hidden;
+}
+
+.donor-auth-brand-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    150deg,
+    rgba(32, 60, 43, 0.95) 0%,
+    rgba(22, 48, 33, 0.92) 45%,
+    rgba(14, 28, 20, 0.97) 100%
+  );
+  backdrop-filter: blur(2px);
+  z-index: 1;
+}
+
+.donor-auth-brand-content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: space-between;
+}
+
+.donor-auth-logo-badge {
+  display: inline-flex;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.95);
+  padding: 8px 16px;
+  border-radius: 12px;
+  margin-bottom: 22px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  width: fit-content;
+}
+
+.donor-auth-logo-badge img {
+  height: 32px;
+  width: auto;
+  display: block;
+}
+
+.donor-auth-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(221, 175, 76, 0.16);
+  color: #f7d070;
+  border: 1px solid rgba(221, 175, 76, 0.35);
+  padding: 6px 14px;
+  border-radius: 9999px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  width: fit-content;
+}
+
+.donor-auth-brand-title {
+  font-size: 2rem;
+  font-weight: 800;
+  line-height: 1.22;
+  color: #ffffff;
+  margin-top: 24px;
+  margin-bottom: 14px;
+  letter-spacing: -0.02em;
+}
+
+.donor-auth-brand-title span {
+  color: #DDAF4C;
+}
+
+.donor-auth-brand-desc {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.88);
+  margin-bottom: 32px;
+}
+
+.donor-auth-features {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 32px;
+}
+
+.donor-auth-feature-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+}
+
+.donor-auth-feature-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #DDAF4C;
+  flex-shrink: 0;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.donor-auth-feature-text h4 {
+  font-size: 0.92rem;
+  font-weight: 700;
+  margin: 0 0 2px 0;
+  color: #ffffff;
+}
+
+.donor-auth-feature-text p {
+  font-size: 0.82rem;
+  color: rgba(255, 255, 255, 0.76);
+  margin: 0;
+  line-height: 1.4;
+}
+
+.donor-auth-quote {
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+  padding-top: 20px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.donor-auth-quote-tag {
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.82);
+  line-height: 1.45;
+}
+
+.donor-auth-quote-tag strong {
+  color: #DDAF4C;
+}
+
+/* --------------------------------------------------------------------------
+   RIGHT COLUMN - CLEAN WHITE AUTH FORM
+   -------------------------------------------------------------------------- */
+.donor-auth-form-side {
+  flex: 0 0 56%;
+  background: #ffffff;
+  padding: 48px 44px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.donor-auth-form-header {
+  margin-bottom: 24px;
+}
+
+.donor-auth-form-eyebrow {
+  display: inline-block;
+  color: #203C2B;
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+
+.donor-auth-form-title {
+  font-size: 1.75rem;
+  font-weight: 800;
+  color: #0f172a;
+  margin-bottom: 8px;
+  letter-spacing: -0.015em;
+}
+
+.donor-auth-form-sub {
+  color: #64748b;
+  font-size: 0.92rem;
+  margin-bottom: 0;
+  line-height: 1.5;
+}
+
+/* Modern Segmented Tabs */
+.donor-auth-tabs {
+  display: flex;
+  background: #f1f5f2;
+  border-radius: 9999px;
+  padding: 4px;
+  margin-bottom: 26px;
+  border: 1px solid rgba(32, 60, 43, 0.08);
+}
+
+.donor-auth-tab-btn {
+  flex: 1;
+  padding: 10px 18px;
+  border: none;
+  border-radius: 9999px;
+  background: transparent;
+  color: #64748b;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.22s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.donor-auth-tab-btn:hover:not(.active) {
+  color: #203C2B;
+  background: rgba(255, 255, 255, 0.5);
+}
+
+.donor-auth-tab-btn.active {
+  background: #ffffff;
+  color: #203C2B;
+  font-weight: 700;
+  box-shadow: 0 3px 10px rgba(32, 60, 43, 0.08), 0 1px 3px rgba(0, 0, 0, 0.04);
+}
+
+/* Clean Alert Notifications */
+.donor-auth-alert {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 14px 16px;
+  border-radius: 12px;
+  font-size: 0.88rem;
+  line-height: 1.45;
+  margin-bottom: 22px;
+  animation: donorFadeIn 0.25s ease-out;
+}
+
+.donor-auth-alert--error {
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+  color: #991b1b;
+}
+
+.donor-auth-alert--error svg {
+  color: #dc2626;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.donor-auth-alert--success {
+  background: #ecfdf5;
+  border: 1px solid #a7f3d0;
+  color: #065f46;
+}
+
+.donor-auth-alert--success svg {
+  color: #059669;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+@keyframes donorFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Form Groups & Inputs */
+.donor-auth-field {
+  margin-bottom: 20px;
+}
+
+.donor-auth-label {
+  display: block;
+  font-size: 0.84rem;
+  font-weight: 700;
+  color: #334155;
+  margin-bottom: 6px;
+}
+
+.donor-auth-label span {
+  color: #dc2626;
+}
+
+.donor-auth-input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.donor-auth-input-icon {
+  position: absolute;
+  left: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #94a3b8;
+  pointer-events: none;
+  transition: color 0.2s ease;
+  z-index: 2;
+}
+
+.donor-auth-input {
+  width: 100%;
+  padding: 13px 16px 13px 44px;
+  border: 1.5px solid #e2e8f0;
+  border-radius: 12px;
+  font-size: 0.95rem;
+  color: #0f172a;
+  background: #fafaf9;
+  transition: all 0.2s ease;
+  line-height: 1.4;
+}
+
+.donor-auth-input--with-toggle {
+  padding-right: 46px;
+}
+
+.donor-auth-input:focus {
+  outline: none;
+  background: #ffffff;
+  border-color: #203C2B;
+  box-shadow: 0 0 0 3px rgba(32, 60, 43, 0.12);
+}
+
+.donor-auth-input:focus ~ .donor-auth-input-icon,
+.donor-auth-input-wrapper:focus-within .donor-auth-input-icon {
+  color: #203C2B;
+}
+
+.donor-auth-toggle-pwd {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: transparent;
+  border: none;
+  color: #94a3b8;
+  padding: 6px;
+  cursor: pointer;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.2s, background-color 0.2s;
+  z-index: 2;
+}
+
+.donor-auth-toggle-pwd:hover {
+  color: #203C2B;
+  background: #f1f5f2;
+}
+
+.donor-auth-hint {
+  display: block;
+  font-size: 0.78rem;
+  color: #64748b;
+  margin-top: 6px;
+}
+
+/* Primary Submit Button */
+.donor-auth-submit-btn {
+  width: 100%;
+  background: #203C2B;
+  color: #ffffff;
+  border: none;
+  border-radius: 12px;
+  padding: 14px 24px;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  box-shadow: 0 8px 20px -4px rgba(32, 60, 43, 0.35);
+  transition: all 0.22s cubic-bezier(0.4, 0, 0.2, 1);
+  margin-top: 8px;
+}
+
+.donor-auth-submit-btn:hover:not(:disabled) {
+  background: #172e21;
+  transform: translateY(-1.5px);
+  box-shadow: 0 12px 26px -6px rgba(32, 60, 43, 0.45);
+}
+
+.donor-auth-submit-btn:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.donor-auth-submit-btn:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.donor-auth-submit-btn .btn-arrow {
+  color: #DDAF4C;
+  transition: transform 0.2s ease;
+}
+
+.donor-auth-submit-btn:hover:not(:disabled) .btn-arrow {
+  transform: translateX(3px);
+}
+
+/* Footer Navigation Switcher */
+.donor-auth-footer {
+  text-align: center;
+  margin-top: 26px;
+  font-size: 0.88rem;
+  color: #64748b;
+}
+
+.donor-auth-switch-btn {
+  background: transparent;
+  border: none;
+  color: #203C2B;
+  font-weight: 700;
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  padding: 0 4px;
+  transition: color 0.2s ease;
+}
+
+.donor-auth-switch-btn:hover {
+  color: #172e21;
+}
+
+/* --------------------------------------------------------------------------
+   RESPONSIVE DESIGN (TABLETS & MOBILE)
+   -------------------------------------------------------------------------- */
+@media (max-width: 991px) {
+  .donor-auth-card {
+    flex-direction: column;
+    max-width: 580px;
+    margin: 0 auto;
+    border-radius: 20px;
+  }
+
+  .donor-auth-brand-side {
+    flex: none;
+    padding: 36px 28px;
+  }
+
+  .donor-auth-brand-title {
+    font-size: 1.55rem;
+    margin-top: 16px;
+    margin-bottom: 10px;
+  }
+
+  .donor-auth-brand-desc {
+    font-size: 0.88rem;
+    margin-bottom: 20px;
+  }
+
+  .donor-auth-features {
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+
+  .donor-auth-feature-text p {
+    font-size: 0.78rem;
+  }
+
+  .donor-auth-quote {
+    display: none;
+  }
+
+  .donor-auth-form-side {
+    flex: none;
+    padding: 36px 28px;
+  }
+
+  .donor-auth-form-title {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .donor-auth-section {
+    padding: 24px 12px;
+  }
+
+  .donor-auth-brand-side {
+    padding: 28px 20px;
+  }
+
+  .donor-auth-features {
+    display: none;
+  }
+
+  .donor-auth-form-side {
+    padding: 28px 20px;
+  }
+
+  .donor-auth-tab-btn {
+    padding: 8px 12px;
+    font-size: 0.84rem;
+  }
+}

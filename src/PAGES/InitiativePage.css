@@ -1,0 +1,1205 @@
+.initiative-page {
+  --initiative-forest: #203c2b;
+  --initiative-deep: #172d21;
+  --initiative-sage: #526b42;
+  --initiative-cream: #f5f1e7;
+  --initiative-white: #faf9f5;
+  --initiative-clay: #b96e4c;
+  --initiative-gold: #ddaf4c;
+  --initiative-earth: #66513d;
+  overflow: clip;
+  color: var(--initiative-forest);
+  background: var(--initiative-white);
+}
+
+.initiative-page *,
+.initiative-page *::before,
+.initiative-page *::after {
+  box-sizing: border-box;
+}
+
+.initiative-page .initiative-heading {
+  margin: 0;
+  color: var(--initiative-forest);
+  font-family: "DM Serif Display", Georgia, "Times New Roman", serif;
+  font-size: clamp(2.35rem, 4.4vw, 4.3rem);
+  font-weight: 400;
+  letter-spacing: -0.035em;
+  line-height: 1.07;
+  text-wrap: balance;
+}
+
+.initiative-page .initiative-heading--light {
+  color: #fff;
+}
+
+.initiative-page .initiative-hero__title {
+  max-width: 950px;
+  margin: 0;
+  color: #fff;
+  font-family: "DM Serif Display", Georgia, "Times New Roman", serif;
+  font-size: clamp(3.2rem, 7vw, 7rem);
+  font-weight: 400;
+  letter-spacing: -0.04em;
+  line-height: 0.99;
+  text-wrap: balance;
+}
+
+.initiative-page .initiative-hero__title .animated-text__highlight {
+  color: var(--initiative-gold);
+}
+
+.initiative-section {
+  position: relative;
+  scroll-margin-top: 128px;
+}
+
+.initiative-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  margin-bottom: 20px;
+  color: var(--initiative-sage);
+  font-family: "Inter", "DM Sans", system-ui, sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  line-height: 1.5;
+  text-transform: uppercase;
+}
+
+.initiative-eyebrow > span {
+  margin: 0 7px;
+  color: var(--initiative-gold);
+}
+
+.initiative-eyebrow--light {
+  color: #d3ddc8;
+}
+
+.initiative-page .initiative-eyebrow--light.animated-text--underline::after {
+  background: var(--initiative-gold);
+}
+
+.initiative-page .animated-text--underline::after {
+  height: 1px;
+  background: var(--initiative-clay);
+}
+
+.initiative-copy {
+  max-width: 660px;
+  margin: 18px 0 0;
+  color: #6f766e;
+  font-family: "Inter", "DM Sans", system-ui, sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.85;
+}
+
+.initiative-copy--light {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.initiative-hero {
+  position: relative;
+  display: flex;
+  min-height: clamp(480px, 60vh, 600px);
+  align-items: center;
+  padding: 64px clamp(24px, 5vw, 48px);
+  overflow: hidden;
+  isolation: isolate;
+  color: #fff;
+  background: var(--initiative-deep);
+}
+
+.initiative-hero__photo,
+.initiative-hero__shade {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+}
+
+.initiative-hero__photo {
+  background-image: var(--initiative-hero-image);
+  background-position: center;
+  background-size: cover;
+  animation: initiative-drift 28s ease-in-out infinite alternate;
+}
+
+.initiative-hero--biogas .initiative-hero__photo {
+  background-position: center 57%;
+}
+
+.initiative-hero--smoke-free-homes .initiative-hero__photo {
+  background-position: center 52%;
+}
+
+.initiative-hero--women-empowerment .initiative-hero__photo {
+  background-position: center 46%;
+}
+
+.initiative-hero--skill-development .initiative-hero__photo {
+  background-position: center 43%;
+}
+
+.initiative-hero__shade {
+  z-index: -1;
+  background: linear-gradient(90deg, rgba(20, 43, 30, 0.94) 0%, rgba(23, 45, 33, 0.76) 48%, rgba(23, 45, 33, 0.19) 100%);
+}
+
+.initiative-hero--smoke-free-homes .initiative-hero__shade {
+  background: linear-gradient(90deg, rgba(20, 43, 30, 0.9), rgba(23, 45, 33, 0.67) 48%, rgba(23, 45, 33, 0.22));
+}
+
+.initiative-hero__content {
+  width: min(100%, 980px);
+  margin: 0 auto;
+}
+
+.initiative-hero__summary {
+  max-width: 600px;
+  margin: 26px 0 0;
+  color: rgba(255, 255, 255, 0.82);
+  font-family: "Inter", "DM Sans", system-ui, sans-serif;
+  font-size: clamp(15px, 1.55vw, 18px);
+  line-height: 1.8;
+}
+
+.initiative-hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 20px;
+  margin-top: 34px;
+}
+
+.initiative-action {
+  display: inline-flex;
+  min-height: 52px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 8px 17px 8px 20px;
+  border: 1px solid transparent;
+  border-radius: 0;
+  font: inherit;
+  font-family: "Inter", "DM Sans", system-ui, sans-serif;
+  font-size: 12px;
+  font-weight: 650;
+  cursor: pointer;
+  transition: color 220ms ease, background-color 220ms ease, border-color 220ms ease, transform 220ms ease;
+}
+
+.initiative-action--primary {
+  color: var(--initiative-deep);
+  background: var(--initiative-cream);
+}
+
+.initiative-action--primary:hover {
+  color: var(--initiative-deep);
+  background: #fff;
+  transform: translateY(-2px);
+}
+
+.initiative-action--light {
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.48);
+  background: transparent;
+}
+
+.initiative-action--light:hover {
+  color: var(--initiative-deep);
+  border-color: var(--initiative-cream);
+  background: var(--initiative-cream);
+  transform: translateY(-2px);
+}
+
+.initiative-action:focus-visible,
+.initiative-hero__scroll:focus-visible {
+  outline: 3px solid var(--initiative-gold);
+  outline-offset: 4px;
+}
+
+.initiative-action svg {
+  transition: transform 200ms ease;
+}
+
+.initiative-action:hover svg {
+  transform: translateX(3px);
+}
+
+.initiative-hero__scroll {
+  display: inline-flex;
+  min-height: 44px;
+  align-items: center;
+  gap: 8px;
+  color: rgba(255, 255, 255, 0.82);
+  font-family: "Inter", "DM Sans", system-ui, sans-serif;
+  font-size: 11px;
+  text-decoration: none;
+}
+
+.initiative-hero__scroll svg {
+  color: var(--initiative-gold);
+  animation: initiative-scroll 1.8s ease-in-out infinite;
+}
+
+.initiative-hero__index {
+  position: absolute;
+  right: clamp(26px, 5vw, 75px);
+  bottom: 34px;
+  color: rgba(255, 255, 255, 0.63);
+  font-family: "Inter", "DM Sans", system-ui, sans-serif;
+  font-size: 9px;
+  letter-spacing: 0.16em;
+}
+
+.initiative-intro {
+  display: grid;
+  grid-template-columns: minmax(0, 0.95fr) minmax(0, 0.85fr);
+  align-items: center;
+  gap: clamp(52px, 9vw, 140px);
+  width: min(100% - 48px, 1260px);
+  margin: 0 auto;
+  padding: 64px 0;
+}
+
+.initiative-intro__copy {
+  max-width: 620px;
+}
+
+.initiative-intro__copy .initiative-copy + .initiative-copy {
+  margin-top: 12px;
+}
+
+.initiative-intro__visual {
+  position: relative;
+  aspect-ratio: 0.96;
+  overflow: hidden;
+  background: #dce1d4;
+}
+
+.initiative-intro__visual::after {
+  position: absolute;
+  inset: 0;
+  border: 1px solid rgba(32, 60, 43, 0.12);
+  content: "";
+  pointer-events: none;
+}
+
+.initiative-intro__visual img,
+.initiative-story__visual img,
+.initiative-gallery__image img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 850ms cubic-bezier(0.2, 0.72, 0.25, 1);
+}
+
+.initiative-intro__visual:hover img,
+.initiative-story__visual:hover img,
+.initiative-gallery__image:hover img {
+  transform: scale(1.035);
+}
+
+.initiative-intro__image-label {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  padding: 13px 17px;
+  color: var(--initiative-forest);
+  background: var(--initiative-cream);
+  font-family: "Inter", "DM Sans", system-ui, sans-serif;
+  font-size: 9px;
+  font-weight: 650;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.initiative-process {
+  padding: 64px max(24px, calc((100% - 1280px) / 2));
+  color: #fff;
+  background: var(--initiative-forest);
+}
+
+.initiative-process::after {
+  position: absolute;
+  right: -120px;
+  bottom: -240px;
+  width: 500px;
+  height: 500px;
+  border: 1px solid rgba(245, 241, 231, 0.1);
+  border-radius: 50%;
+  box-shadow: 0 0 0 35px rgba(245, 241, 231, 0.025), 0 0 0 70px rgba(245, 241, 231, 0.02);
+  content: "";
+  pointer-events: none;
+}
+
+.initiative-section__header {
+  max-width: 720px;
+  margin: 0 auto 54px;
+}
+
+.initiative-section__header .initiative-copy {
+  margin-top: 17px;
+}
+
+.initiative-process .initiative-section__header {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+}
+
+.initiative-process .initiative-section__header .initiative-eyebrow {
+  justify-content: center;
+}
+
+.initiative-process__steps {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 34px 30px;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0;
+  list-style: none;
+  counter-reset: process;
+}
+
+.initiative-process__step {
+  position: relative;
+  min-height: 190px;
+  padding: 17px 20px 21px;
+  border-top: 1px solid rgba(245, 241, 231, 0.24);
+  counter-increment: process;
+}
+
+.initiative-process__number {
+  position: absolute;
+  top: 16px;
+  right: 18px;
+  color: rgba(221, 175, 76, 0.85);
+  font-family: "DM Serif Display", Georgia, serif;
+  font-size: 15px;
+}
+
+.initiative-process__icon {
+  display: grid;
+  width: 42px;
+  height: 42px;
+  margin-bottom: 22px;
+  place-items: center;
+  color: var(--initiative-gold);
+  background: rgba(245, 241, 231, 0.09);
+}
+
+.initiative-process__step h3 {
+  margin: 0;
+  color: #fff;
+  font-family: "DM Serif Display", Georgia, serif;
+  font-size: 21px;
+  font-weight: 400;
+}
+
+.initiative-process__step p {
+  max-width: 300px;
+  margin: 9px 0 0;
+  color: rgba(255, 255, 255, 0.67);
+  font-family: "Inter", "DM Sans", system-ui, sans-serif;
+  font-size: 12px;
+  line-height: 1.7;
+}
+
+.initiative-benefits {
+  padding: 64px max(24px, calc((100% - 1220px) / 2));
+  background: var(--initiative-cream);
+}
+
+.initiative-benefits .initiative-section__header {
+  max-width: 720px;
+  margin-left: 0;
+}
+
+.initiative-benefit-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  border-top: 1px solid rgba(32, 60, 43, 0.18);
+  border-bottom: 1px solid rgba(32, 60, 43, 0.18);
+}
+
+.initiative-benefit {
+  position: relative;
+  min-height: 245px;
+  padding: 24px clamp(17px, 2.3vw, 32px) 27px 0;
+}
+
+.initiative-benefit + .initiative-benefit {
+  padding-left: clamp(17px, 2.3vw, 32px);
+  border-left: 1px solid rgba(32, 60, 43, 0.17);
+}
+
+.initiative-benefit__number {
+  display: block;
+  margin-bottom: 27px;
+  color: var(--initiative-clay);
+  font-family: "Inter", "DM Sans", system-ui, sans-serif;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+}
+
+.initiative-benefit__icon {
+  display: grid;
+  width: 38px;
+  height: 38px;
+  margin-bottom: 18px;
+  place-items: center;
+  color: var(--initiative-sage);
+  background: rgba(82, 107, 66, 0.09);
+}
+
+.initiative-benefit h3 {
+  margin: 0;
+  color: var(--initiative-forest);
+  font-family: "DM Serif Display", Georgia, serif;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 1.2;
+}
+
+.initiative-benefit p {
+  margin: 10px 0 0;
+  color: #70766e;
+  font-family: "Inter", "DM Sans", system-ui, sans-serif;
+  font-size: 11px;
+  line-height: 1.75;
+}
+
+.initiative-note {
+  max-width: 700px;
+  margin: 21px 0 0;
+  color: #797568;
+  font-family: "Inter", "DM Sans", system-ui, sans-serif;
+  font-size: 10px;
+  line-height: 1.7;
+}
+
+.initiative-story {
+  display: grid;
+  grid-template-columns: minmax(0, 0.92fr) minmax(0, 0.86fr);
+  align-items: center;
+  gap: clamp(52px, 9vw, 130px);
+  width: min(100% - 48px, 1220px);
+  margin: 0 auto;
+  padding: 64px 0;
+}
+
+.initiative-story--women-empowerment .initiative-story__visual {
+  order: 2;
+}
+
+.initiative-story--women-empowerment .initiative-story__copy {
+  order: 1;
+}
+
+.initiative-story__visual {
+  position: relative;
+  min-width: 0;
+  aspect-ratio: 1.02;
+  overflow: hidden;
+  background: #dce1d4;
+}
+
+.initiative-story__visual::after {
+  position: absolute;
+  inset: 0;
+  border: 1px solid rgba(32, 60, 43, 0.12);
+  content: "";
+  pointer-events: none;
+}
+
+.initiative-story__visual > span {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  padding: 12px 15px;
+  color: var(--initiative-forest);
+  background: var(--initiative-cream);
+  font-family: "Inter", "DM Sans", system-ui, sans-serif;
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+}
+
+.initiative-story__copy {
+  max-width: 590px;
+}
+
+.initiative-story__copy blockquote {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  margin: 29px 0 0;
+  padding: 20px 0 0;
+  border-top: 1px solid rgba(32, 60, 43, 0.17);
+  color: var(--initiative-forest);
+  font-family: "DM Serif Display", Georgia, serif;
+  font-size: clamp(18px, 2vw, 23px);
+  line-height: 1.45;
+}
+
+.initiative-story__copy blockquote svg {
+  flex: 0 0 auto;
+  margin-top: 3px;
+  color: var(--initiative-clay);
+}
+
+.initiative-gallery {
+  padding: 64px max(24px, calc((100% - 1220px) / 2));
+  background: var(--initiative-cream);
+}
+
+.initiative-gallery__disclaimer {
+  max-width: 600px;
+  margin: 16px 0 0;
+  color: #77786e;
+  font-family: "Inter", "DM Sans", system-ui, sans-serif;
+  font-size: 10px;
+  line-height: 1.65;
+}
+
+.initiative-gallery__grid {
+  display: grid;
+  grid-template-columns: 1.1fr 0.78fr 0.9fr;
+  align-items: end;
+  gap: 20px;
+}
+
+.initiative-gallery__image {
+  position: relative;
+  min-width: 0;
+  margin: 0;
+  overflow: hidden;
+  background: #dce1d4;
+}
+
+.initiative-gallery__image--1 {
+  aspect-ratio: 1.02;
+}
+
+.initiative-gallery__image--2 {
+  aspect-ratio: 0.82;
+}
+
+.initiative-gallery__image--3 {
+  aspect-ratio: 0.92;
+}
+
+.initiative-gallery__image figcaption {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  min-height: 45px;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  color: #fff;
+  background: linear-gradient(transparent, rgba(23, 45, 33, 0.86));
+  font-family: "Inter", "DM Sans", system-ui, sans-serif;
+  font-size: 10px;
+}
+
+.initiative-gallery__image figcaption span {
+  color: var(--initiative-gold);
+  font-size: 9px;
+  font-weight: 700;
+}
+
+.initiative-cta {
+  position: relative;
+  display: flex;
+  min-height: auto;
+  align-items: center;
+  padding: 64px max(26px, calc((100% - 1140px) / 2));
+  overflow: hidden;
+  isolation: isolate;
+  color: #fff;
+  background: var(--initiative-deep);
+}
+
+.initiative-cta__image {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  background-image: var(--initiative-cta-image);
+  background-position: center 54%;
+  background-size: cover;
+}
+
+.initiative-cta::after {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(90deg, rgba(20, 43, 30, 0.94), rgba(23, 45, 33, 0.78) 55%, rgba(23, 45, 33, 0.44));
+  content: "";
+}
+
+.initiative-cta__content {
+  width: min(100%, 740px);
+}
+
+.initiative-cta__content > p {
+  max-width: 580px;
+  margin: 18px 0 0;
+  color: rgba(255, 255, 255, 0.75);
+  font-family: "Inter", "DM Sans", system-ui, sans-serif;
+  font-size: 13px;
+  line-height: 1.8;
+}
+
+.initiative-cta__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 27px;
+}
+
+.initiative-cta .initiative-eyebrow--light.animated-text--underline::after {
+  background: var(--initiative-gold);
+}
+
+.initiative-page--women-empowerment .initiative-benefit-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1px;
+  border: 0;
+  background: rgba(32, 60, 43, 0.15);
+}
+
+.initiative-page--women-empowerment .initiative-benefit {
+  min-height: 218px;
+  padding: 24px clamp(18px, 3vw, 39px);
+  background: var(--initiative-white);
+}
+
+.initiative-page--women-empowerment .initiative-benefit + .initiative-benefit {
+  border: 0;
+}
+
+.initiative-page--skill-development .initiative-benefit-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0 42px;
+  border: 0;
+}
+
+.initiative-page--skill-development .initiative-benefit {
+  display: grid;
+  min-height: 165px;
+  grid-template-columns: 43px 42px minmax(0, 1fr);
+  align-content: start;
+  column-gap: 13px;
+  padding: 24px 0;
+  border-top: 1px solid rgba(32, 60, 43, 0.18);
+}
+
+.initiative-page--skill-development .initiative-benefit + .initiative-benefit,
+.initiative-page--skill-development .initiative-benefit:nth-child(3) {
+  padding-left: 0;
+  border-left: 0;
+}
+
+.initiative-page--skill-development .initiative-benefit__number {
+  grid-column: 1;
+  grid-row: 1 / span 3;
+  margin: 8px 0 0;
+}
+
+.initiative-page--skill-development .initiative-benefit__icon {
+  grid-column: 2;
+  grid-row: 1 / span 2;
+  margin: 0;
+}
+
+.initiative-page--skill-development .initiative-benefit h3,
+.initiative-page--skill-development .initiative-benefit p {
+  grid-column: 3;
+}
+
+.initiative-page--skill-development .initiative-benefit h3 {
+  align-self: end;
+}
+
+.initiative-page--skill-development .initiative-benefit p {
+  margin-top: 8px;
+}
+
+@keyframes initiative-drift {
+  from { transform: scale(1); }
+  to { transform: scale(1.045); }
+}
+
+@keyframes initiative-scroll {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(4px); }
+}
+
+@media (max-width: 900px) {
+  .initiative-intro,
+  .initiative-story {
+    gap: 48px;
+    width: min(100% - 44px, 760px);
+  }
+
+  .initiative-benefit-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .initiative-benefit {
+    min-height: 220px;
+    padding: 22px 24px 24px 0;
+  }
+
+  .initiative-benefit:nth-child(3) {
+    padding-left: 0;
+    border-left: 0;
+    border-top: 1px solid rgba(32, 60, 43, 0.17);
+  }
+
+  .initiative-benefit:nth-child(4) {
+    border-top: 1px solid rgba(32, 60, 43, 0.17);
+  }
+
+  .initiative-page--women-empowerment .initiative-benefit:nth-child(n) {
+    min-height: 205px;
+    padding: 21px 23px;
+    border: 0;
+  }
+
+  .initiative-page--skill-development .initiative-benefit-grid {
+    gap: 0 28px;
+  }
+
+  .initiative-page--skill-development .initiative-benefit {
+    min-height: 165px;
+    padding: 20px 0;
+    border-top: 1px solid rgba(32, 60, 43, 0.18);
+    border-left: 0;
+  }
+
+  .initiative-process__steps {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .initiative-gallery__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .initiative-gallery__image--3 {
+    aspect-ratio: 1.1;
+  }
+}
+
+@media (max-width: 600px) {
+  .initiative-page .initiative-heading {
+    font-size: clamp(2.15rem, 9vw, 3.1rem);
+    line-height: 1.1;
+  }
+
+  .initiative-page .initiative-hero__title {
+    font-size: clamp(2.75rem, 12vw, 4.4rem);
+    line-height: 1.02;
+  }
+
+  .initiative-eyebrow {
+    margin-bottom: 15px;
+    font-size: 9px;
+  }
+
+  .initiative-copy {
+    font-size: 13px;
+    line-height: 1.8;
+  }
+
+  .initiative-hero {
+    min-height: auto;
+    align-items: flex-end;
+    padding: 48px 20px;
+  }
+
+  .initiative-hero__shade {
+    background: linear-gradient(0deg, rgba(20, 43, 30, 0.95) 0%, rgba(23, 45, 33, 0.78) 53%, rgba(23, 45, 33, 0.28));
+  }
+
+  .initiative-hero__summary {
+    margin-top: 20px;
+    font-size: 14px;
+    line-height: 1.75;
+  }
+
+  .initiative-hero__actions {
+    align-items: flex-start;
+    gap: 12px;
+    margin-top: 23px;
+  }
+
+  .initiative-action {
+    min-height: 48px;
+    gap: 14px;
+    padding-left: 15px;
+    font-size: 11px;
+  }
+
+  .initiative-hero__actions {
+    flex-direction: column;
+  }
+
+  .initiative-hero__index {
+    right: 21px;
+    bottom: 27px;
+    font-size: 8px;
+  }
+
+  .initiative-intro,
+  .initiative-story {
+    grid-template-columns: 1fr;
+    gap: 32px;
+    width: auto;
+    padding: 48px 20px;
+  }
+
+  .initiative-intro__visual {
+    width: min(100%, 440px);
+    aspect-ratio: 1.05;
+  }
+
+  .initiative-process,
+  .initiative-benefits,
+  .initiative-gallery {
+    padding: 48px 20px;
+  }
+
+  .initiative-section__header {
+    margin-bottom: 34px;
+  }
+
+  .initiative-process .initiative-section__header {
+    text-align: left;
+  }
+
+  .initiative-process .initiative-section__header .initiative-eyebrow {
+    justify-content: flex-start;
+  }
+
+  .initiative-process__steps {
+    grid-template-columns: 1fr;
+    gap: 7px;
+  }
+
+  .initiative-process__step {
+    min-height: 0;
+    padding: 17px 44px 21px 0;
+  }
+
+  .initiative-process__icon {
+    margin-bottom: 13px;
+  }
+
+  .initiative-process__step p {
+    max-width: none;
+  }
+
+  .initiative-benefit-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .initiative-benefit,
+  .initiative-benefit + .initiative-benefit,
+  .initiative-benefit:nth-child(3) {
+    min-height: 0;
+    padding: 19px 0 22px;
+    border-top: 1px solid rgba(32, 60, 43, 0.17);
+    border-left: 0;
+  }
+
+  .initiative-benefit:first-child {
+    border-top: 0;
+  }
+
+  .initiative-page--women-empowerment .initiative-benefit-grid,
+  .initiative-page--skill-development .initiative-benefit-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .initiative-page--women-empowerment .initiative-benefit:nth-child(n) {
+    min-height: 0;
+    padding: 19px 0 22px;
+    background: transparent;
+    border-bottom: 1px solid rgba(32, 60, 43, 0.17);
+  }
+
+  .initiative-page--skill-development .initiative-benefit {
+    min-height: 0;
+    padding: 19px 0 22px;
+  }
+
+  .initiative-benefit__number {
+    margin-bottom: 17px;
+  }
+
+  .initiative-benefit__icon {
+    margin-bottom: 12px;
+  }
+
+  .initiative-story--women-empowerment .initiative-story__visual,
+  .initiative-story--women-empowerment .initiative-story__copy {
+    order: initial;
+  }
+
+  .initiative-story__visual {
+    width: min(100%, 460px);
+    aspect-ratio: 0.98;
+  }
+
+  .initiative-story__copy blockquote {
+    margin-top: 23px;
+    font-size: 19px;
+  }
+
+  .initiative-gallery__grid {
+    grid-template-columns: 1fr 0.85fr;
+    gap: 12px;
+  }
+
+  .initiative-gallery__image--1 {
+    aspect-ratio: 0.85;
+  }
+
+  .initiative-gallery__image--2 {
+    aspect-ratio: 0.73;
+  }
+
+  .initiative-gallery__image--3 {
+    grid-column: 1 / -1;
+    aspect-ratio: 1.25;
+  }
+
+  .initiative-gallery__image figcaption {
+    gap: 7px;
+    padding: 8px 10px;
+    font-size: 8px;
+  }
+
+  .initiative-cta {
+    min-height: auto;
+    padding: 48px 20px;
+  }
+
+  .initiative-cta__actions {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .initiative-page *,
+  .initiative-page *::before,
+  .initiative-page *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+.initiative-learning-library {
+  display: grid;
+  grid-template-columns: minmax(0, 0.75fr) minmax(0, 1.25fr);
+  align-items: start;
+  gap: clamp(35px, 6vw, 82px);
+  padding: 64px max(24px, calc((100% - 1220px) / 2));
+  background: var(--initiative-cream);
+}
+
+.initiative-learning-library__intro {
+  max-width: 470px;
+}
+
+.initiative-learning-library__intro > p {
+  margin: 15px 0 0;
+  color: #70766e;
+  font-family: "Inter", "DM Sans", system-ui, sans-serif;
+  font-size: 12px;
+  line-height: 1.8;
+}
+
+.initiative-learning-library__links {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  border-top: 1px solid rgba(32, 60, 43, 0.17);
+}
+
+.initiative-learning-library__links button {
+  display: flex;
+  min-height: 70px;
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
+  border: 0;
+  border-bottom: 1px solid rgba(32, 60, 43, 0.17);
+  background: transparent;
+  color: var(--initiative-forest);
+  font-family: "Inter", "DM Sans", system-ui, sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  text-align: left;
+  cursor: pointer;
+  transition: background-color 200ms ease, color 200ms ease;
+}
+
+.initiative-learning-library__links button:hover {
+  background: rgba(250, 249, 245, 0.75);
+}
+
+.initiative-learning-library__number {
+  color: var(--initiative-clay);
+  font-size: 9px;
+  font-weight: 700;
+}
+
+.initiative-learning-library__links button svg {
+  flex: 0 0 auto;
+  margin-left: auto;
+  color: var(--initiative-sage);
+  transition: transform 200ms ease;
+}
+
+.initiative-learning-library__links button:hover svg {
+  transform: translateX(3px);
+}
+
+.initiative-learning-library__links button:focus-visible {
+  outline: 3px solid var(--initiative-gold);
+  outline-offset: -3px;
+}
+
+@media (max-width: 900px) {
+  .initiative-learning-library {
+    grid-template-columns: 1fr;
+    gap: 25px;
+  }
+}
+
+@media (max-width: 600px) {
+  .initiative-learning-library {
+    gap: 21px;
+    padding: 48px 20px;
+  }
+
+  .initiative-learning-library__links {
+    grid-template-columns: 1fr;
+  }
+
+  .initiative-learning-library__links button {
+    min-height: 58px;
+  }
+}
+
+.initiative-applications {
+  padding: 64px max(24px, calc((100% - 1220px) / 2));
+  background: var(--initiative-white);
+}
+
+.initiative-applications .initiative-section__header {
+  max-width: 760px;
+}
+
+.initiative-applications__grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  border-top: 1px solid rgba(32, 60, 43, 0.17);
+  border-bottom: 1px solid rgba(32, 60, 43, 0.17);
+}
+
+.initiative-application {
+  min-height: 220px;
+  padding: 21px clamp(15px, 2vw, 26px) 25px 0;
+}
+
+.initiative-application + .initiative-application {
+  padding-left: clamp(15px, 2vw, 26px);
+  border-left: 1px solid rgba(32, 60, 43, 0.17);
+}
+
+.initiative-application__number {
+  display: block;
+  margin-bottom: 18px;
+  color: var(--initiative-clay);
+  font-size: 9px;
+  font-weight: 700;
+}
+
+.initiative-application__icon {
+  display: grid;
+  width: 36px;
+  height: 36px;
+  margin-bottom: 15px;
+  place-items: center;
+  color: var(--initiative-sage);
+  background: rgba(82, 107, 66, 0.09);
+}
+
+.initiative-application h3 {
+  margin: 0;
+  color: var(--initiative-forest);
+  font-family: "DM Serif Display", Georgia, serif;
+  font-size: 19px;
+  font-weight: 400;
+}
+
+.initiative-application p {
+  margin: 8px 0 0;
+  color: #70766e;
+  font-size: 11px;
+  line-height: 1.7;
+}
+
+@media (max-width: 900px) {
+  .initiative-applications__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .initiative-application:nth-child(3) {
+    padding-left: 0;
+    border-top: 1px solid rgba(32, 60, 43, 0.17);
+    border-left: 0;
+  }
+
+  .initiative-application:nth-child(4) {
+    border-top: 1px solid rgba(32, 60, 43, 0.17);
+  }
+}
+
+@media (max-width: 600px) {
+  .initiative-applications {
+    padding: 48px 20px;
+  }
+
+  .initiative-applications__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .initiative-application,
+  .initiative-application + .initiative-application,
+  .initiative-application:nth-child(3) {
+    min-height: 0;
+    padding: 18px 0 21px;
+    border-top: 1px solid rgba(32, 60, 43, 0.17);
+    border-left: 0;
+  }
+
+  .initiative-application:first-child {
+    border-top: 0;
+  }
+}

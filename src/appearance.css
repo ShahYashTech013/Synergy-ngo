@@ -1,0 +1,368 @@
+[data-appearance-section] {
+  --appearance-top: var(--appearance-base-top, 0px);
+  --appearance-bottom: var(--appearance-base-bottom, 0px);
+  --appearance-left: var(--appearance-base-left, 0px);
+  --appearance-right: var(--appearance-base-right, 0px);
+  --appearance-headingParagraph: var(--appearance-base-headingParagraph, 16px);
+  --appearance-paragraphButton: var(--appearance-base-paragraphButton, 24px);
+  --appearance-heroHeading: var(--appearance-base-heroHeading, inherit);
+  --appearance-sectionHeading: var(--appearance-base-sectionHeading, inherit);
+  --appearance-subheading: var(--appearance-base-subheading, inherit);
+  --appearance-paragraph: var(--appearance-base-paragraph, inherit);
+  --appearance-cardTitle: var(--appearance-base-cardTitle, inherit);
+  --appearance-cardDescription: var(--appearance-base-cardDescription, inherit);
+  --appearance-buttonText: var(--appearance-base-buttonText, inherit);
+  --appearance-footerText: var(--appearance-base-footerText, inherit);
+  padding-block: var(--appearance-top, 0px) var(--appearance-bottom, 0px) !important;
+  padding-inline: var(--appearance-left, 0px) var(--appearance-right, 0px) !important;
+  text-align: var(--appearance-text, left);
+}
+
+[data-appearance-hero-heading] h1 {
+  font-size: var(--appearance-heroHeading, inherit) !important;
+}
+
+[data-appearance-section-heading] h2 {
+  font-size: var(--appearance-sectionHeading, inherit) !important;
+}
+
+[data-appearance-subheading] h3,
+[data-appearance-subheading] h4 {
+  font-size: var(--appearance-subheading, inherit) !important;
+}
+
+[data-appearance-paragraph] p {
+  font-size: var(--appearance-paragraph, inherit) !important;
+}
+
+[data-appearance-card-title] .card-title,
+[data-appearance-card-title] h5 {
+  font-size: var(--appearance-cardTitle, inherit) !important;
+}
+
+[data-appearance-card-description] .card-text {
+  font-size: var(--appearance-cardDescription, inherit) !important;
+}
+
+[data-appearance-button-text] button {
+  font-size: var(--appearance-buttonText, inherit) !important;
+}
+
+[data-appearance-section] h1,
+[data-appearance-section] h2,
+[data-appearance-section] h3,
+[data-appearance-section] h4,
+[data-appearance-section] h5 {
+  margin-bottom: var(--appearance-headingParagraph, initial);
+}
+
+[data-appearance-section] h1,
+[data-appearance-section] h2,
+[data-appearance-section] h3,
+[data-appearance-section] h4,
+[data-appearance-section] h5 {
+  margin-bottom: var(--appearance-headingParagraph, initial) !important;
+}
+
+[data-appearance-paragraph-spacing] p {
+  margin-bottom: var(--appearance-paragraphButton, initial) !important;
+}
+
+[data-appearance-card-padding] .card-body {
+  padding: var(--appearance-cardPadding) !important;
+}
+
+[data-appearance-grid-gap] .row {
+  --bs-gutter-y: var(--appearance-gridGap, 24px) !important;
+}
+
+[data-appearance-card-gap] .row {
+  --bs-gutter-x: var(--appearance-cardGap, 24px) !important;
+}
+
+[data-appearance-section] [data-appearance-layout] {
+  justify-content: var(--appearance-content-justify, initial);
+  align-items: var(--appearance-vertical-align, initial);
+}
+
+[data-appearance-image-text] [data-appearance-layout] {
+  --bs-gutter-x: var(--appearance-imageText, 24px) !important;
+}
+
+[data-appearance-section] img {
+  object-position: var(--appearance-image, center) center;
+}
+
+footer[data-appearance-footer-text] {
+  font-size: var(--appearance-footerText, inherit);
+}
+
+.hero-video-section {
+  isolation: isolate;
+  background-color: #183a2a;
+}
+
+.hero-background-video,
+.hero-background-overlay {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.hero-background-video {
+  z-index: 0;
+  object-fit: cover;
+  object-position: center;
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+.hero-background-overlay {
+  z-index: 1;
+  background: linear-gradient(110deg, rgba(24, 58, 42, .78), rgba(8, 29, 20, .72));
+  pointer-events: none;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+}
+
+.hero-scroll-indicator,
+.scroll-indicator {
+  position: absolute;
+  z-index: 3;
+  bottom: clamp(76px, 9vh, 92px);
+  left: 50%;
+  margin-left: -21px;
+  display: grid;
+  width: 42px;
+  height: 42px;
+  place-items: center;
+  padding: 0;
+  border: 1px solid rgba(245, 241, 231, .55);
+  border-radius: 50%;
+  background: rgba(23, 45, 33, .25);
+  color: #f5f1e7;
+  cursor: pointer;
+  animation: bounceArrow 1.8s ease-in-out infinite;
+  box-shadow: 0 0 0 5px rgba(245, 241, 231, .045), 0 0 20px rgba(221, 175, 76, .15);
+  -webkit-backdrop-filter: blur(5px);
+  backdrop-filter: blur(5px);
+  transition: background-color 200ms ease, border-color 200ms ease, box-shadow 200ms ease, color 200ms ease;
+}
+
+.hero-scroll-indicator:hover,
+.scroll-indicator:hover {
+  border-color: #e3bd68;
+  background: rgba(23, 45, 33, .65);
+  color: #ffdd80;
+  box-shadow: 0 0 0 6px rgba(245, 241, 231, .08), 0 0 24px rgba(221, 175, 76, .35);
+}
+
+.hero-scroll-indicator:focus-visible,
+.scroll-indicator:focus-visible {
+  outline: 3px solid #e3bd68;
+  outline-offset: 5px;
+}
+
+@keyframes bounceArrow {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(10px);
+  }
+}
+
+@keyframes hero-scroll-bounce {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(10px);
+  }
+}
+
+@media (max-width: 575.98px) {
+
+  .hero-scroll-indicator,
+  .scroll-indicator {
+    bottom: 78px;
+    width: 38px;
+    height: 38px;
+    margin-left: -19px;
+  }
+}
+
+
+.hero-video-loading {
+  position: absolute;
+  z-index: 2;
+  right: 50%;
+  bottom: clamp(18px, 3vw, 30px);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: min(230px, calc(100% - 36px));
+  padding: 10px 13px;
+  border: 1px solid rgb(255 255 255 / 28%);
+  border-radius: 999px;
+  background: rgb(16 35 24 / 38%);
+  color: #fff;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  transform: translateX(50%);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.hero-video-loading__track {
+  position: relative;
+  display: block;
+  height: 3px;
+  flex: 1;
+  overflow: hidden;
+  border-radius: 99px;
+  background: rgb(255 255 255 / 25%);
+}
+
+.hero-video-loading__track span {
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 38%;
+  border-radius: inherit;
+  background: #b8e2b8;
+  box-shadow: 0 0 10px rgb(184 226 184 / 55%);
+  animation: hero-loading-sweep 1.35s ease-in-out infinite;
+}
+
+@keyframes hero-loading-sweep {
+  from {
+    transform: translateX(-110%);
+  }
+
+  to {
+    transform: translateX(280%);
+  }
+}
+
+.hero-flow-indicators {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.hero-flow-step {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 12px;
+  border-radius: 7px;
+  background: #f5f1e7;
+  color: #203c2b;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.3;
+  white-space: nowrap;
+}
+
+.hero-flow-arrow {
+  flex: 0 0 auto;
+  color: #ddaf4c;
+  font-size: 22px;
+  line-height: 1;
+}
+
+@media (max-width: 767.98px) {
+  .hero-background-video {
+    object-position: center;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-video-loading__track span {
+    animation: none;
+    inset: 0;
+    width: 100%;
+  }
+}
+
+@media (min-width: 992px) {
+  [data-appearance-section] {
+    --appearance-top: var(--appearance-desktop-top, var(--appearance-base-top, 0px));
+    --appearance-bottom: var(--appearance-desktop-bottom, var(--appearance-base-bottom, 0px));
+    --appearance-left: var(--appearance-desktop-left, var(--appearance-base-left, 0px));
+    --appearance-right: var(--appearance-desktop-right, var(--appearance-base-right, 0px));
+    --appearance-headingParagraph: var(--appearance-desktop-headingParagraph, var(--appearance-base-headingParagraph, 16px));
+    --appearance-paragraphButton: var(--appearance-desktop-paragraphButton, var(--appearance-base-paragraphButton, 24px));
+    --appearance-imageText: var(--appearance-desktop-imageText, var(--appearance-base-imageText, 24px));
+    --appearance-cardGap: var(--appearance-desktop-cardGap, var(--appearance-base-cardGap, 24px));
+    --appearance-gridGap: var(--appearance-desktop-gridGap, var(--appearance-base-gridGap, 24px));
+    --appearance-cardPadding: var(--appearance-desktop-cardPadding, var(--appearance-base-cardPadding, 24px));
+    --appearance-heroHeading: var(--appearance-desktop-heroHeading, var(--appearance-base-heroHeading, inherit));
+    --appearance-sectionHeading: var(--appearance-desktop-sectionHeading, var(--appearance-base-sectionHeading, inherit));
+    --appearance-subheading: var(--appearance-desktop-subheading, var(--appearance-base-subheading, inherit));
+    --appearance-paragraph: var(--appearance-desktop-paragraph, var(--appearance-base-paragraph, inherit));
+    --appearance-cardTitle: var(--appearance-desktop-cardTitle, var(--appearance-base-cardTitle, inherit));
+    --appearance-cardDescription: var(--appearance-desktop-cardDescription, var(--appearance-base-cardDescription, inherit));
+    --appearance-buttonText: var(--appearance-desktop-buttonText, var(--appearance-base-buttonText, inherit));
+    --appearance-footerText: var(--appearance-desktop-footerText, var(--appearance-base-footerText, inherit));
+  }
+}
+
+@media (min-width: 768px) and (max-width: 991.98px) {
+  [data-appearance-section] {
+    --appearance-top: var(--appearance-tablet-top, var(--appearance-base-top, 0px));
+    --appearance-bottom: var(--appearance-tablet-bottom, var(--appearance-base-bottom, 0px));
+    --appearance-left: var(--appearance-tablet-left, var(--appearance-base-left, 0px));
+    --appearance-right: var(--appearance-tablet-right, var(--appearance-base-right, 0px));
+    --appearance-headingParagraph: var(--appearance-tablet-headingParagraph, var(--appearance-base-headingParagraph, 16px));
+    --appearance-paragraphButton: var(--appearance-tablet-paragraphButton, var(--appearance-base-paragraphButton, 24px));
+    --appearance-imageText: var(--appearance-tablet-imageText, var(--appearance-base-imageText, 24px));
+    --appearance-cardGap: var(--appearance-tablet-cardGap, var(--appearance-base-cardGap, 24px));
+    --appearance-gridGap: var(--appearance-tablet-gridGap, var(--appearance-base-gridGap, 24px));
+    --appearance-cardPadding: var(--appearance-tablet-cardPadding, var(--appearance-base-cardPadding, 24px));
+    --appearance-heroHeading: var(--appearance-tablet-heroHeading, var(--appearance-base-heroHeading, inherit));
+    --appearance-sectionHeading: var(--appearance-tablet-sectionHeading, var(--appearance-base-sectionHeading, inherit));
+    --appearance-subheading: var(--appearance-tablet-subheading, var(--appearance-base-subheading, inherit));
+    --appearance-paragraph: var(--appearance-tablet-paragraph, var(--appearance-base-paragraph, inherit));
+    --appearance-cardTitle: var(--appearance-tablet-cardTitle, var(--appearance-base-cardTitle, inherit));
+    --appearance-cardDescription: var(--appearance-tablet-cardDescription, var(--appearance-base-cardDescription, inherit));
+    --appearance-buttonText: var(--appearance-tablet-buttonText, var(--appearance-base-buttonText, inherit));
+    --appearance-footerText: var(--appearance-tablet-footerText, var(--appearance-base-footerText, inherit));
+  }
+}
+
+@media (max-width: 767.98px) {
+  [data-appearance-section] {
+    --appearance-top: var(--appearance-mobile-top, var(--appearance-base-top, 0px));
+    --appearance-bottom: var(--appearance-mobile-bottom, var(--appearance-base-bottom, 0px));
+    --appearance-left: var(--appearance-mobile-left, var(--appearance-base-left, 0px));
+    --appearance-right: var(--appearance-mobile-right, var(--appearance-base-right, 0px));
+    --appearance-headingParagraph: var(--appearance-mobile-headingParagraph, var(--appearance-base-headingParagraph, 16px));
+    --appearance-paragraphButton: var(--appearance-mobile-paragraphButton, var(--appearance-base-paragraphButton, 24px));
+    --appearance-imageText: var(--appearance-mobile-imageText, var(--appearance-base-imageText, 24px));
+    --appearance-cardGap: var(--appearance-mobile-cardGap, var(--appearance-base-cardGap, 24px));
+    --appearance-gridGap: var(--appearance-mobile-gridGap, var(--appearance-base-gridGap, 24px));
+    --appearance-cardPadding: var(--appearance-mobile-cardPadding, var(--appearance-base-cardPadding, 24px));
+    --appearance-heroHeading: var(--appearance-mobile-heroHeading, var(--appearance-base-heroHeading, inherit));
+    --appearance-sectionHeading: var(--appearance-mobile-sectionHeading, var(--appearance-base-sectionHeading, inherit));
+    --appearance-subheading: var(--appearance-mobile-subheading, var(--appearance-base-subheading, inherit));
+    --appearance-paragraph: var(--appearance-mobile-paragraph, var(--appearance-base-paragraph, inherit));
+    --appearance-cardTitle: var(--appearance-mobile-cardTitle, var(--appearance-base-cardTitle, inherit));
+    --appearance-cardDescription: var(--appearance-mobile-cardDescription, var(--appearance-base-cardDescription, inherit));
+    --appearance-buttonText: var(--appearance-mobile-buttonText, var(--appearance-base-buttonText, inherit));
+    --appearance-footerText: var(--appearance-mobile-footerText, var(--appearance-base-footerText, inherit));
+  }
+}

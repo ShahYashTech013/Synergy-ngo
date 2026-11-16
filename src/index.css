@@ -1,0 +1,184 @@
+html {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: #243b2d;
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: #243b2d;
+  color: #212529;
+  overflow-x: hidden;
+}
+
+#root {
+  min-height: 100%;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
+  background-color: #243b2d;
+}
+
+.synergy-app-shell {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+  min-height: 100dvh;
+  flex: 1 0 auto;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: #f5f1e7;
+}
+
+.synergy-main-content {
+  flex: 1 0 auto;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+/* Standardized section spacing: 64px desktop, 48px mobile */
+.synergy-section-padding {
+  padding-top: 64px !important;
+  padding-bottom: 64px !important;
+}
+
+@media (max-width: 767px) {
+  .synergy-section-padding {
+    padding-top: 48px !important;
+    padding-bottom: 48px !important;
+  }
+}
+
+.installation-context-figure {
+  min-width: 0;
+}
+
+.installation-context-photo {
+  display: block;
+  flex: 0 0 auto;
+  width: min(100%, 260px);
+  aspect-ratio: 3 / 4;
+  height: auto;
+  border-radius: 0.9rem;
+  object-fit: cover;
+  object-position: center 55%;
+}
+
+.synergy-public-form .form-control,
+.synergy-public-form .form-select {
+  min-height: 48px;
+  min-width: 0;
+  padding: 0.7rem 0.9rem;
+  border-radius: 0.7rem;
+}
+
+.synergy-public-form textarea.form-control {
+  min-height: 120px;
+  resize: vertical;
+}
+
+.synergy-public-form .form-control:focus,
+.synergy-public-form .form-select:focus {
+  border-color: #398257;
+  box-shadow: 0 0 0 0.22rem rgb(57 130 87 / 18%);
+}
+
+.synergy-public-form :is(input, select, textarea, button):focus-visible {
+  outline: 3px solid #6f9c79;
+  outline-offset: 2px;
+}
+
+.synergy-public-form .form-label {
+  display: inline-block;
+  margin-bottom: 0.45rem;
+}
+
+.synergy-public-form .alert,
+.synergy-public-form .form-text {
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+
+.synergy-public-form button[type="submit"] {
+  min-height: 48px;
+}
+
+.synergy-public-form .row > [class*="col-"] {
+  min-width: 0;
+}
+
+.join-team-layout {
+  max-width: 1440px;
+  margin-inline: auto;
+}
+
+.join-team-content,
+.join-team-form {
+  min-width: 0;
+}
+
+.join-team-form {
+  width: 100%;
+}
+
+.join-team-form .d-flex {
+  flex-wrap: wrap;
+}
+
+@media (max-width: 991.98px) {
+  .join-team-layout {
+    max-width: 760px;
+  }
+}
+
+.synergy-password-control {
+  display: flex;
+  align-items: stretch;
+  gap: 0.5rem;
+}
+
+.synergy-password-control .form-control {
+  flex: 1 1 auto;
+}
+
+.synergy-password-control button {
+  flex: 0 0 auto;
+  min-width: 4.5rem;
+  border-radius: 0.7rem;
+}
+
+@media (max-width: 575.98px) {
+  .synergy-public-form.card {
+    padding: 1.25rem !important;
+  }
+
+  .synergy-public-form .d-flex > button[type="submit"] {
+    width: 100%;
+  }
+
+  .synergy-donor-header {
+    flex-wrap: wrap;
+    gap: 0.9rem;
+  }
+
+  .synergy-donor-header__identity {
+    min-width: 0;
+    overflow-wrap: anywhere;
+  }
+
+  .synergy-review-actions {
+    flex-direction: column;
+  }
+
+  .synergy-review-actions > button {
+    width: 100%;
+  }
+}

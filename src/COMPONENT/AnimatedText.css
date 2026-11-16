@@ -1,0 +1,207 @@
+.animated-text,
+.animated-counter {
+  --earth-olive: #526b42;
+  --earth-forest: #203c2b;
+  --earth-cream: #f5f1e7;
+  --earth-terracotta: #b96e4c;
+  --earth-gold: #ddaf4c;
+}
+
+.animated-text--word {
+  perspective: 700px;
+}
+
+.animated-text__word {
+  display: inline-block;
+  transform-origin: 50% 100%;
+}
+
+.animated-text.is-revealed.animated-text--word .animated-text__word {
+  animation: earth-word-reveal var(--animated-duration) cubic-bezier(0.2, 0.72, 0.25, 1) both;
+  animation-delay: calc(var(--animated-delay) + var(--word-index, 0) * var(--animated-stagger));
+}
+
+.animated-text__highlight {
+  position: relative;
+  isolation: isolate;
+  color: var(--earth-gold);
+}
+
+.animated-text__line-mask {
+  display: block;
+  overflow: clip;
+}
+
+.animated-text__line-content {
+  display: inline-block;
+}
+
+.animated-text.is-revealed.animated-text--line .animated-text__line-content {
+  animation: earth-line-reveal var(--animated-duration) cubic-bezier(0.2, 0.72, 0.25, 1) both;
+  animation-delay: var(--animated-delay);
+}
+
+.animated-text.is-revealed.animated-text--fade {
+  animation: earth-fade-up var(--animated-duration) cubic-bezier(0.2, 0.72, 0.25, 1) both;
+  animation-delay: var(--animated-delay);
+}
+
+.animated-text.is-revealed.animated-text--blur {
+  animation: earth-blur-in var(--animated-duration) cubic-bezier(0.2, 0.72, 0.25, 1) both;
+  animation-delay: var(--animated-delay);
+}
+
+.animated-text--underline {
+  position: relative;
+  width: fit-content;
+}
+
+.animated-text--underline::after {
+  display: block;
+  width: 100%;
+  height: 2px;
+  margin-top: 5px;
+  background: var(--earth-terracotta);
+  content: "";
+  transform: scaleX(0);
+  transform-origin: left center;
+}
+
+.animated-text.is-revealed.animated-text--underline::after {
+  animation: earth-underline var(--animated-duration) cubic-bezier(0.2, 0.72, 0.25, 1) both;
+  animation-delay: var(--animated-delay);
+}
+
+.animated-text__character {
+  display: inline-block;
+}
+
+.animated-text.is-revealed.animated-text--character .animated-text__character {
+  animation: earth-character-reveal 360ms cubic-bezier(0.2, 0.72, 0.25, 1) both;
+  animation-delay: calc(var(--animated-delay) + var(--character-index, 0) * 22ms);
+}
+
+.animated-counter {
+  display: inline-block;
+  font-variant-numeric: tabular-nums;
+}
+
+.animated-cta-button {
+  transition: color 220ms ease, background-color 220ms ease, transform 220ms ease, box-shadow 220ms ease;
+}
+
+.animated-cta-button:hover {
+  transform: translateY(-2px);
+}
+
+.animated-cta-button i {
+  display: inline-block;
+  transition: transform 220ms ease;
+}
+
+.animated-cta-button:hover i {
+  transform: translateX(3px);
+}
+
+.animated-project-card {
+  transition: transform 240ms ease, box-shadow 240ms ease;
+}
+
+.animated-project-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 28px rgba(32, 60, 43, 0.1) !important;
+}
+
+.animated-cta-button:focus-visible {
+  outline: 3px solid var(--earth-gold);
+  outline-offset: 3px;
+}
+
+@keyframes earth-word-reveal {
+  from {
+    filter: blur(3px);
+    opacity: 0.3;
+    transform: translate3d(0, 0.34em, -8px);
+  }
+  to {
+    filter: blur(0);
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes earth-line-reveal {
+  from {
+    opacity: 0.5;
+    transform: translate3d(0, 0.62em, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes earth-fade-up {
+  from {
+    opacity: 0.25;
+    transform: translate3d(0, 12px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes earth-blur-in {
+  from {
+    filter: blur(5px);
+    opacity: 0.3;
+    transform: translate3d(0, 8px, 0);
+  }
+  to {
+    filter: blur(0);
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes earth-underline {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+
+@keyframes earth-character-reveal {
+  from {
+    opacity: 0.25;
+    transform: translate3d(0, 5px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@media (max-width: 767px) {
+  .animated-text.is-revealed.animated-text--word .animated-text__word {
+    animation-name: earth-fade-up;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animated-text,
+  .animated-text *,
+  .animated-counter,
+  .animated-project-card,
+  .animated-cta-button,
+  .animated-cta-button i {
+    animation: none !important;
+    transition: none !important;
+    filter: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  .animated-text--underline::after {
+    transform: scaleX(1);
+  }
+}
