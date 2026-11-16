@@ -833,8 +833,8 @@ function PublicWebsite() {
                 </div>
                 <div className="our-story-editorial">
                   <div className="our-story-photo-stack">
-                    <img className="our-story-main-photo" src="/images/story/IMG3BIOGAS.jpeg" alt="Field team and community members beside a brick dome digester under construction" loading="lazy" />
-                    <img className="our-story-detail-photo" src="/images/story/BIO%20GAS%20INSTALL1.jpeg" alt="Community members at a biogas digester construction site" loading="lazy" />
+                    <img className="our-story-main-photo" src={assetUrl("/images/story/IMG3BIOGAS.jpeg")} alt="Field team and community members beside a brick dome digester under construction" loading="lazy" />
+                    <img className="our-story-detail-photo" src={assetUrl("/images/story/BIO GAS INSTALL1.jpeg")} alt="Community members at a biogas digester construction site" loading="lazy" />
                   </div>
                   <div className="our-story-principles">
                     <span className="our-story-kicker">What Guides Us</span>
@@ -848,9 +848,9 @@ function PublicWebsite() {
                 <div className="our-story-gallery">
                   <div><span className="our-story-kicker">Behind the Work</span><h3>Field moments</h3></div>
                   <div className="our-story-gallery-grid">
-                    <img src="/images/story/IMG3BIOGAS.jpeg" alt="Community members and field workers at a digester site" loading="lazy" />
-                    <img src="/images/story/BIO%20GAS%20INSTALL1.jpeg" alt="Brick dome biogas digester construction" loading="lazy" />
-                    <img src="/images/story/WhatsApp%20Image%202026-11-08%20at%203.21.40%20PM.jpeg" alt="Woman carrying gathered firewood outdoors" loading="lazy" />
+                    <img src={assetUrl("/images/story/IMG3BIOGAS.jpeg")} alt="Community members and field workers at a digester site" loading="lazy" />
+                    <img src={assetUrl("/images/story/BIO GAS INSTALL1.jpeg")} alt="Brick dome biogas digester construction" loading="lazy" />
+                    <img src={assetUrl("/images/story/WhatsApp Image 2026-11-08 at 3.21.40 PM.jpeg")} alt="Woman carrying gathered firewood outdoors" loading="lazy" />
                   </div>
                 </div>
               </div>

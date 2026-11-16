@@ -101,12 +101,12 @@ export default function FindOurLocation() {
                 style={{ height: "205px", background: "#f1f3f0" }}
               >
                 <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d122283.78508779679!2d74.16882655!3d16.7086212!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc1000cdec07a29%3A0xece8dda6aa266eb8!2sKolhapur%2C%20Maharashtra!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin"
+                  src="https://maps.google.com/maps?q=Kolhapur%2C+Maharashtra&t=&z=13&ie=UTF8&iwloc=&output=embed"
                   title="Synergy Organization Location Map"
                   style={{ border: 0, width: "100%", height: "100%" }}
                   allowFullScreen=""
                   loading="lazy"
-                  referrerPolicy="no-referrer-when-downgrade"
+                  referrerPolicy="no-referrer"
                 ></iframe>
                 <a
                   href={directionsUrl}

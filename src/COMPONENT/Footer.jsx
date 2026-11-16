@@ -1,4 +1,5 @@
 import { Mail, Phone } from "lucide-react";
+import { assetUrl } from "../utils/assetUrl";
 
 const groups = [
   {
@@ -97,7 +98,7 @@ export default function Footer({ publicContact }) {
         <div className="synergy-footer__main">
           {/* Column 1: SYNERGY ORGANIZATION */}
           <div className="synergy-footer__brand">
-            <a href="/" className="synergy-footer__wordmark">
+            <a href={assetUrl("/")} className="synergy-footer__wordmark">
               <span>SYNERGY</span>
               <small>ORGANIZATION (INDIA)</small>
             </a>
@@ -122,7 +123,7 @@ export default function Footer({ publicContact }) {
               <ul>
                 {group.links.map(([label, href]) => (
                   <li key={label}>
-                    <a href={href}>{label}</a>
+                    <a href={href.startsWith("http") || href.startsWith("mailto:") || href.startsWith("tel:") ? href : assetUrl(href)}>{label}</a>
                   </li>
                 ))}
               </ul>
@@ -156,9 +157,9 @@ export default function Footer({ publicContact }) {
             © {new Date().getFullYear()} Synergy Organization (India). All rights reserved.
           </span>
           <div className="synergy-footer__bottom-links">
-            <a href="/#contact">Contact</a>
-            <a href="/about">About</a>
-            <a href="/#impact">Impact</a>
+            <a href={assetUrl("/#contact")}>Contact</a>
+            <a href={assetUrl("/about")}>About</a>
+            <a href={assetUrl("/#impact")}>Impact</a>
           </div>
         </div>
       </div>
