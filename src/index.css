@@ -13,6 +13,11 @@ body {
   background-color: #243b2d;
   color: #212529;
   overflow-x: hidden;
+  font-family: "Times New Roman", Times, Georgia, serif;
+}
+
+input, button, select, textarea {
+  font-family: inherit;
 }
 
 #root {

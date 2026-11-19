@@ -1,6 +1,5 @@
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { ArrowRight } from "lucide-react";
-import AnimatedText from "./AnimatedText.jsx";
 import { assetUrl } from "../utils/assetUrl";
 import "./FocusAreasShowcase.css";
 
@@ -11,6 +10,7 @@ const focusAreas = [
     aliases: ["smoke-free-homes", "clean-energy", "biogas-clean-energy"],
     label: "",
     title: "Biogas for Clean Energy",
+    stripHeading: "CLEAN ENERGY & HEALTHIER COMMUNITIES",
     content: {
       paragraphs: [
         "Synergy Organisation actively promotes the adoption of biogas technology as a sustainable and eco-friendly energy solution, particularly in rural and semi-urban communities where traditional cooking relies heavily on firewood, coal, or other biomass fuels. By converting organic waste—such as food waste, agricultural residues, and animal dung—into clean energy, the programme provides households with a reliable and environmentally responsible alternative to conventional fuels. This reduces indoor air pollution, mitigates deforestation, and lowers greenhouse gas emissions, contributing directly to improved health and environmental protection.",
@@ -30,6 +30,7 @@ const focusAreas = [
     aliases: ["agriculture"],
     label: "",
     title: "Sustainable Agriculture Support Programs",
+    stripHeading: "REGENERATIVE AGRICULTURE & SOIL RESTORATION",
     content: {
       paragraphs: [
         "Sustainable agriculture support programs play a vital role in strengthening rural livelihoods while protecting the environment. These initiatives encourage farmers to transition toward organic and eco-friendly farming practices, reducing their dependence on harmful chemical fertilizers and pesticides. By promoting sustainable methods, the programs aim to create a balanced agricultural system that improves productivity without degrading natural resources.",
@@ -52,6 +53,7 @@ const focusAreas = [
     aliases: ["environmental-awareness", "environment"],
     label: "",
     title: "Environmental Awareness Campaigns",
+    stripHeading: "COMMUNITY WASTE MANAGEMENT & STEWARDSHIP",
     content: {
       paragraphs: [
         "Environmental awareness campaigns play a crucial role in building informed, responsible, and environmentally conscious communities. These initiatives are designed to educate individuals about sustainable living practices, effective waste management, and conservation efforts that protect natural resources. By spreading knowledge and encouraging positive behavioral change, such campaigns lay the foundation for long-term environmental sustainability.",
@@ -74,6 +76,7 @@ const focusAreas = [
     aliases: ["women-empowerment-programs"],
     label: "",
     title: "Women empowerment programs",
+    stripHeading: "WOMEN'S ECONOMIC INDEPENDENCE & LEADERSHIP",
     content: {
       paragraphs: [
         "Synergy Organisation's Women Empowerment Programs are dedicated to strengthening the social, economic, and personal empowerment of women by providing them with practical skills, confidence, and opportunities for sustainable growth. These initiatives focus on enabling women to recognize their potential, assert their rights, and actively participate in decision-making processes within their families and communities.",
@@ -95,6 +98,7 @@ const focusAreas = [
     aliases: ["skills-training", "skills", "youth-skill-development"],
     label: "",
     title: "Youth Skill Development",
+    stripHeading: "INDUSTRY-RELEVANT VOCATIONAL TRAINING",
     content: {
       paragraphs: [
         "Youth Skill Development programs are designed to empower young individuals and unskilled labourers with practical knowledge, technical abilities, and confidence to build sustainable livelihoods. These initiatives focus on bridging the gap between education and employment by providing industry-relevant training that enhances employability and self-reliance.",
@@ -112,6 +116,17 @@ const focusAreas = [
   },
 ];
 
+function InitiativeStrip({ heading }) {
+  if (!heading) return null;
+  return (
+    <div className="focus-showcase__initiative-strip" aria-label={heading}>
+      <h2 className="focus-showcase__strip-heading">
+        <span className="focus-showcase__strip-animated-text">{heading}</span>
+      </h2>
+    </div>
+  );
+}
+
 export default function FocusAreasShowcase({ onNavigate }) {
   const [expandedNumbers, setExpandedNumbers] = useState([]);
   const isExpanded = (number) => expandedNumbers.includes(number);
@@ -127,9 +142,9 @@ export default function FocusAreasShowcase({ onNavigate }) {
           <h2 id="focus-showcase-heading">Our Main Focus Areas</h2>
         </header>
         <div className="focus-showcase__list">
-          {focusAreas.map((area, index) => {
+          {focusAreas.map((area) => {
             const copyElement = (
-              <AnimatedText as="div" variant="fade" delay={index * 60 + 30} className="focus-showcase__copy">
+              <div className="focus-showcase__copy">
                 <span className="focus-showcase__label"><span>{area.number}</span></span>
                 <h3>{area.title}</h3>
                 {area.content ? (
@@ -152,13 +167,18 @@ export default function FocusAreasShowcase({ onNavigate }) {
                     <span>Explore more</span><ArrowRight size={17} aria-hidden="true" />
                   </button>
                 )}
-              </AnimatedText>
+              </div>
             );
 
             const mediaElement = (
-              <AnimatedText as="figure" variant="fade" delay={index * 60} className="focus-showcase__media">
-                <img src={area.image} alt={area.alt} loading="lazy" />
-              </AnimatedText>
+              <div className="focus-showcase__media-frame">
+                <figure className="focus-showcase__media">
+                  <img src={area.image} alt={area.alt} loading="lazy" />
+                </figure>
+                {area.stripHeading && (
+                  <InitiativeStrip heading={area.stripHeading} />
+                )}
+              </div>
             );
 
             return (
@@ -175,14 +195,316 @@ export default function FocusAreasShowcase({ onNavigate }) {
                 {area.content && (
                   <div
                     id={`focus-area-content-${area.number}`}
-                    className="focus-showcase__expanded-content"
+                    className={`focus-showcase__expanded-content ${area.number === "01" || area.id === "clean-cooking" ? "focus-showcase__expanded-content--biogas" : ""} ${area.number === "03" || area.id === "environmental-campaign" ? "focus-showcase__expanded-content--environment" : ""} ${area.number === "02" || area.id === "sustainable-agriculture" ? "focus-showcase__expanded-content--agriculture" : ""} ${area.number === "04" || area.id === "women-empowerment" ? "focus-showcase__expanded-content--women" : ""} ${area.number === "05" || area.id === "skill-development" ? "focus-showcase__expanded-content--skills" : ""}`}
                     hidden={!isExpanded(area.number)}
                   >
-                    {area.content.paragraphs.slice(1).map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
-                    {area.content.conclusion && (
+                    {area.number === "01" || area.id === "clean-cooking" ? (
+                      <div className="focus-showcase__biogas-expanded-editorial">
+                        {/* Section 1: Farming & Bio-Slurry (Image Left, Text Right) */}
+                        <div className="focus-showcase__biogas-editorial-grid focus-showcase__biogas-editorial-grid--section1">
+                          <div className="focus-showcase__editorial-media-wrapper">
+                            <figure className="focus-showcase__biogas-editorial-media">
+                              <img
+                                src={assetUrl("/images/biogas/biogas-sustainable-agriculture.jpg")}
+                                alt="Rural Indian farmer applying organic bio-slurry fertilizer beside a biogas plant"
+                                loading="lazy"
+                              />
+                            </figure>
+                            <InitiativeStrip heading="ORGANIC BIO-SLURRY APPLICATION" />
+                          </div>
+                          <div className="focus-showcase__biogas-editorial-text">
+                            <h4>Bio-Slurry & Organic Agriculture</h4>
+                            <p>{area.content.paragraphs[1]}</p>
+                            <h4>Rural Livelihoods & Economic Empowerment</h4>
+                            <p>{area.content.paragraphs[2]}</p>
+                          </div>
+                        </div>
+
+                        {/* Section 2: Conclusion & Community (Text Left, Image Right) */}
+                        {area.content.conclusion && (
+                          <div className="focus-showcase__biogas-editorial-grid focus-showcase__biogas-editorial-grid--section2">
+                            <div className="focus-showcase__biogas-editorial-text focus-showcase__biogas-editorial-text--conclusion">
+                              <h4>Conclusion</h4>
+                              <p>{area.content.conclusion}</p>
+                            </div>
+                            <div className="focus-showcase__editorial-media-wrapper">
+                              <figure className="focus-showcase__biogas-editorial-media focus-showcase__biogas-editorial-media--conclusion">
+                                <img
+                                  src={assetUrl("/images/biogas/biogas-community-empowerment.jpg")}
+                                  alt="Rural Indian woman cooking with clean blue biogas flame on veranda with village community"
+                                  loading="lazy"
+                                />
+                              </figure>
+                              <InitiativeStrip heading="SMOKELESS COOKING & CLEAN FLAME" />
+                            </div>
+                          </div>
+                        )}
+                      </div>
+                    ) : area.number === "03" || area.id === "environmental-campaign" ? (
+                      <div className="focus-showcase__environment-expanded-editorial">
+                        {/* Section 1: Waste Management (Image Left, Content Right) */}
+                        <div className="focus-showcase__environment-editorial-grid focus-showcase__environment-editorial-grid--section1">
+                          <div className="focus-showcase__editorial-media-wrapper">
+                            <figure className="focus-showcase__environment-editorial-media">
+                              <img
+                                src={assetUrl("/images/environment/environmental_waste_management_campaign_clean_1795026100792.jpg")}
+                                alt="Synergy Organisation environmental campaign volunteers conducting waste segregation and clean-up"
+                                loading="lazy"
+                              />
+                            </figure>
+                            <InitiativeStrip heading="COMMUNITY WASTE SEGREGATION & CLEAN-UP" />
+                          </div>
+                          <div className="focus-showcase__environment-editorial-text">
+                            <h4>Waste Management</h4>
+                            <p>{area.content.paragraphs[1]}</p>
+                          </div>
+                        </div>
+
+                        {/* Section 2: Awareness Workshop (Content Left, Image Right) */}
+                        <div className="focus-showcase__environment-editorial-grid focus-showcase__environment-editorial-grid--section2">
+                          <div className="focus-showcase__environment-editorial-text">
+                            <h4>Awareness Workshops</h4>
+                            <p>{area.content.paragraphs[2]}</p>
+                            <p>{area.content.paragraphs[3]}</p>
+                          </div>
+                          <div className="focus-showcase__editorial-media-wrapper">
+                            <figure className="focus-showcase__environment-editorial-media">
+                              <img
+                                src={assetUrl("/images/environment/environmental_awareness_workshop_1795026156562.jpg")}
+                                alt="Community environmental awareness workshop on sustainable practices and conservation"
+                                loading="lazy"
+                              />
+                            </figure>
+                            <InitiativeStrip heading="GRASSROOTS CONSERVATION WORKSHOP" />
+                          </div>
+                        </div>
+
+                        {/* Section 3: Tree Plantation & Conclusion (Image Left, Content Right) */}
+                        <div className="focus-showcase__environment-editorial-grid focus-showcase__environment-editorial-grid--section3">
+                          <div className="focus-showcase__editorial-media-wrapper">
+                            <figure className="focus-showcase__environment-editorial-media">
+                              <img
+                                src={assetUrl("/images/environment/environmental_community_tree_plantation_1795026126588.jpg")}
+                                alt="Community members and volunteers planting trees in a rural green plantation drive"
+                                loading="lazy"
+                              />
+                            </figure>
+                            <InitiativeStrip heading="COMMUNITY TREE PLANTATION DRIVE" />
+                          </div>
+                          <div className="focus-showcase__environment-editorial-text focus-showcase__environment-editorial-text--conclusion">
+                            <h4>Tree Plantation</h4>
+                            <p>{area.content.paragraphs[4]}</p>
+                            <p>{area.content.paragraphs[5]}</p>
+                            {area.content.conclusion && (
+                              <>
+                                <h4>Conclusion</h4>
+                                <p>{area.content.conclusion}</p>
+                              </>
+                            )}
+                          </div>
+                        </div>
+                      </div>
+                    ) : area.number === "02" || area.id === "sustainable-agriculture" ? (
+                      <div className="focus-showcase__initiative-expanded-editorial">
+                        {/* Section 1: Farmer Education (Text Left, Image Right) */}
+                        <div className="focus-showcase__initiative-editorial-grid focus-showcase__initiative-editorial-grid--image-right">
+                          <div className="focus-showcase__initiative-editorial-text">
+                            <h4>Farmer Education & Capacity Building</h4>
+                            <p>{area.content.paragraphs[1]}</p>
+                          </div>
+                          <div className="focus-showcase__editorial-media-wrapper">
+                            <figure className="focus-showcase__initiative-editorial-media">
+                              <img
+                                src={assetUrl("/images/agriculture/rural_agri_training_session_1795029129506.jpg")}
+                                alt="Agricultural specialist providing practical training on organic farming and soil health to rural Indian farmers"
+                                loading="lazy"
+                              />
+                            </figure>
+                            <InitiativeStrip heading="FARMER EDUCATION & FIELD TRAINING" />
+                          </div>
+                        </div>
+
+                        {/* Section 2: Bio-Slurry Fertilizer (Image Left, Text Right) */}
+                        <div className="focus-showcase__initiative-editorial-grid focus-showcase__initiative-editorial-grid--image-left">
+                          <div className="focus-showcase__editorial-media-wrapper">
+                            <figure className="focus-showcase__initiative-editorial-media">
+                              <img
+                                src={assetUrl("/images/agriculture/farmer_applying_bio_slurry_1795029135211.jpg")}
+                                alt="Indian farmer applying organic biogas slurry fertilizer to enrich soil and nourish healthy crops"
+                                loading="lazy"
+                              />
+                            </figure>
+                            <InitiativeStrip heading="BIO-SLURRY SOIL ENRICHMENT" />
+                          </div>
+                          <div className="focus-showcase__initiative-editorial-text">
+                            <h4>Bio-Slurry & Soil Enrichment</h4>
+                            <p>{area.content.paragraphs[2]}</p>
+                            <p>{area.content.paragraphs[3]}</p>
+                          </div>
+                        </div>
+
+                        {/* Section 3: Economic Resilience & Conclusion (Text Left, Image Right) */}
+                        <div className="focus-showcase__initiative-editorial-grid focus-showcase__initiative-editorial-grid--image-right">
+                          <div className="focus-showcase__initiative-editorial-text focus-showcase__initiative-editorial-text--conclusion">
+                            <h4>Economic Resilience & Stewardship</h4>
+                            <p>{area.content.paragraphs[4]}</p>
+                            <p>{area.content.paragraphs[5]}</p>
+                            {area.content.conclusion && (
+                              <>
+                                <h4>Conclusion</h4>
+                                <p>{area.content.conclusion}</p>
+                              </>
+                            )}
+                          </div>
+                          <div className="focus-showcase__editorial-media-wrapper">
+                            <figure className="focus-showcase__initiative-editorial-media">
+                              <img
+                                src={assetUrl("/images/agriculture/indian_farmers_organic_harvest_1795029142115.jpg")}
+                                alt="Rural Indian farming couple celebrating a bountiful organic harvest in verdant agricultural field"
+                                loading="lazy"
+                              />
+                            </figure>
+                            <InitiativeStrip heading="BOUNTIFUL ORGANIC HARVEST & RESILIENCE" />
+                          </div>
+                        </div>
+                      </div>
+                    ) : area.number === "04" || area.id === "women-empowerment" ? (
+                      <div className="focus-showcase__initiative-expanded-editorial">
+                        {/* Section 1: Vocational Skills (Text Left, Image Right) */}
+                        <div className="focus-showcase__initiative-editorial-grid focus-showcase__initiative-editorial-grid--image-right">
+                          <div className="focus-showcase__initiative-editorial-text">
+                            <h4>Vocational Skills & Micro-Enterprise</h4>
+                            <p>{area.content.paragraphs[1]}</p>
+                          </div>
+                          <div className="focus-showcase__editorial-media-wrapper">
+                            <figure className="focus-showcase__initiative-editorial-media">
+                              <img
+                                src={assetUrl("/images/women/rural_women_tailoring_training_1795029146013.jpg")}
+                                alt="Rural Indian women participating in vocational tailoring and garment craftsmanship training"
+                                loading="lazy"
+                              />
+                            </figure>
+                            <InitiativeStrip heading="VOCATIONAL TAILORING & CRAFTSMANSHIP" />
+                          </div>
+                        </div>
+
+                        {/* Section 2: Self-Help Groups (Image Left, Text Right) */}
+                        <div className="focus-showcase__initiative-editorial-grid focus-showcase__initiative-editorial-grid--image-left">
+                          <div className="focus-showcase__editorial-media-wrapper">
+                            <figure className="focus-showcase__initiative-editorial-media">
+                              <img
+                                src={assetUrl("/images/women/mahila_bachat_gat_meeting_1795029152941.jpg")}
+                                alt="Members of Mahila Bachat Gat self-help group gathering in village courtyard to manage community savings"
+                                loading="lazy"
+                              />
+                            </figure>
+                            <InitiativeStrip heading="MAHILA BACHAT GAT & SAVINGS GROUPS" />
+                          </div>
+                          <div className="focus-showcase__initiative-editorial-text">
+                            <h4>Financial Literacy & Collective Leadership</h4>
+                            <p>{area.content.paragraphs[2]}</p>
+                            <p>{area.content.paragraphs[3]}</p>
+                          </div>
+                        </div>
+
+                        {/* Section 3: Community Leadership & Conclusion (Text Left, Image Right) */}
+                        <div className="focus-showcase__initiative-editorial-grid focus-showcase__initiative-editorial-grid--image-right">
+                          <div className="focus-showcase__initiative-editorial-text focus-showcase__initiative-editorial-text--conclusion">
+                            <h4>Community Leadership & Social Equality</h4>
+                            <p>{area.content.paragraphs[4]}</p>
+                            {area.content.conclusion && (
+                              <>
+                                <h4>Conclusion</h4>
+                                <p>{area.content.conclusion}</p>
+                              </>
+                            )}
+                          </div>
+                          <div className="focus-showcase__editorial-media-wrapper">
+                            <figure className="focus-showcase__initiative-editorial-media">
+                              <img
+                                src={assetUrl("/images/women/rural_women_community_leaders_1795029155069.jpg")}
+                                alt="Confident rural Indian women community leaders standing proudly outside village centre"
+                                loading="lazy"
+                              />
+                            </figure>
+                            <InitiativeStrip heading="COMMUNITY LEADERSHIP & SOCIAL EQUALITY" />
+                          </div>
+                        </div>
+                      </div>
+                    ) : area.number === "05" || area.id === "skill-development" ? (
+                      <div className="focus-showcase__initiative-expanded-editorial">
+                        {/* Section 1: Technical & Vocational Training (Image Left, Text Right) */}
+                        <div className="focus-showcase__initiative-editorial-grid focus-showcase__initiative-editorial-grid--image-left">
+                          <div className="focus-showcase__editorial-media-wrapper">
+                            <figure className="focus-showcase__initiative-editorial-media">
+                              <img
+                                src={assetUrl("/images/skills/vocational_skills_training_india_1795029167099.jpg")}
+                                alt="Young Indian vocational trainees learning technical electrical wiring and mechanical skills from an instructor"
+                                loading="lazy"
+                              />
+                            </figure>
+                            <InitiativeStrip heading="TECHNICAL & VOCATIONAL TRADE TRAINING" />
+                          </div>
+                          <div className="focus-showcase__initiative-editorial-text">
+                            <h4>Technical Training & Livelihood Skills</h4>
+                            <p>{area.content.paragraphs[1]}</p>
+                            <p>{area.content.paragraphs[2]}</p>
+                          </div>
+                        </div>
+
+                        {/* Section 2: Soft Skills & Digital Literacy (Text Left, Image Right) */}
+                        <div className="focus-showcase__initiative-editorial-grid focus-showcase__initiative-editorial-grid--image-right">
+                          <div className="focus-showcase__initiative-editorial-text">
+                            <h4>Soft Skills & Digital Capabilities</h4>
+                            <p>{area.content.paragraphs[3]}</p>
+                          </div>
+                          <div className="focus-showcase__editorial-media-wrapper">
+                            <figure className="focus-showcase__initiative-editorial-media">
+                              <img
+                                src={assetUrl("/images/skills/digital_literacy_classroom_1795029180903.jpg")}
+                                alt="Young Indian students learning computer applications and digital skills in a modern community learning centre"
+                                loading="lazy"
+                              />
+                            </figure>
+                            <InitiativeStrip heading="DIGITAL LITERACY & COMPUTER EDUCATION" />
+                          </div>
+                        </div>
+
+                        {/* Section 3: Entrepreneurship & Economic Transformation (Image Left, Text Right) */}
+                        <div className="focus-showcase__initiative-editorial-grid focus-showcase__initiative-editorial-grid--image-left">
+                          <div className="focus-showcase__editorial-media-wrapper">
+                            <figure className="focus-showcase__initiative-editorial-media">
+                              <img
+                                src={assetUrl("/images/skills/indian_entrepreneur_workshop_1795029177202.jpg")}
+                                alt="Skilled young Indian professional working with confidence in a modern workshop enterprise"
+                                loading="lazy"
+                              />
+                            </figure>
+                            <InitiativeStrip heading="YOUTH ENTREPRENEURSHIP & ENTERPRISE" />
+                          </div>
+                          <div className="focus-showcase__initiative-editorial-text focus-showcase__initiative-editorial-text--conclusion">
+                            <h4>Entrepreneurship & Self-Reliance</h4>
+                            <p>{area.content.paragraphs[4]}</p>
+                            <h4>Economic Transformation</h4>
+                            <p>{area.content.paragraphs[5]}</p>
+                            {area.content.conclusion && (
+                              <>
+                                <h4>Conclusion</h4>
+                                <p>{area.content.conclusion}</p>
+                              </>
+                            )}
+                          </div>
+                        </div>
+                      </div>
+                    ) : (
                       <>
-                        <h4>Conclusion</h4>
-                        <p>{area.content.conclusion}</p>
+                        {area.content.paragraphs.slice(1).map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
+                        {area.content.conclusion && (
+                          <>
+                            <h4>Conclusion</h4>
+                            <p>{area.content.conclusion}</p>
+                          </>
+                        )}
                       </>
                     )}
                   </div>

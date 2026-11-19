@@ -26,9 +26,12 @@ app.use("/api/admin", adminRoutes);
 app.use(errorMiddleware);
 
 const PORT = process.env.PORT || 5000;
+
 connectDB()
-  .then(() => app.listen(PORT, () => console.log(`Server running on port ${PORT}`)))
+  .then(() => {
+    app.listen(PORT, () => console.log(`Server running on port ${PORT} (MongoDB connected)`));
+  })
   .catch((err) => {
-    console.error("Database connection failed:", err.message);
-    process.exit(1);
+    console.warn(`Database connection warning: ${err.message}. Starting API server in offline demo mode on port ${PORT}...`);
+    app.listen(PORT, () => console.log(`Server running in offline demo mode on port ${PORT}`));
   });
