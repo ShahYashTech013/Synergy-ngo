@@ -145,11 +145,11 @@
   letter-spacing: 0;
 }
 
-/* Titles: 28px, font-weight 600 */
+/* Titles: 24px, font-weight 600 */
 .focus-showcase__copy h3 {
   margin: 0.85rem 0 0.75rem;
   color: #243b2d;
-  font-size: 28px;
+  font-size: 24px;
   font-weight: 600;
   line-height: 1.25;
   font-family: "Times New Roman", Times, Georgia, serif;
@@ -321,7 +321,7 @@
   }
 
   .focus-showcase__copy h3 {
-    font-size: 24px;
+    font-size: 21px;
     margin: 0.5rem 0 0.5rem;
   }
 
@@ -418,17 +418,27 @@
 }
 
 .focus-showcase__biogas-editorial-text h4,
-.focus-showcase__environment-editorial-text h4 {
+.focus-showcase__environment-editorial-text h4,
+.focus-showcase__initiative-editorial-text h4 {
   margin: 0 0 0.65rem !important;
   color: #1a4d2e !important;
   font-size: 1.25rem !important;
   font-weight: 700 !important;
   font-family: "Times New Roman", Times, Georgia, serif !important;
+  text-align: left !important;
 }
 
 .focus-showcase__biogas-editorial-text h4:not(:first-child),
-.focus-showcase__environment-editorial-text h4:not(:first-child) {
+.focus-showcase__environment-editorial-text h4:not(:first-child),
+.focus-showcase__initiative-editorial-text h4:not(:first-child) {
   margin-top: 1.25rem !important;
+}
+
+.focus-showcase__biogas-editorial-text,
+.focus-showcase__environment-editorial-text,
+.focus-showcase__initiative-editorial-text {
+  text-align: left !important;
+  align-items: flex-start !important;
 }
 
 /* Media column wrapper for expanded Read More views */

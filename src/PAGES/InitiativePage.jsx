@@ -1,299 +1,283 @@
 import {
-  ArrowDown,
   ArrowRight,
-  ArrowUpRight,
-  BookOpen,
-  Flame,
-  HandHeart,
-  HeartPulse,
-  House,
-  Leaf,
-  Lightbulb,
-  Recycle,
-  ShieldCheck,
-  Sprout,
-  UsersRound,
+  Calendar,
+  Compass,
+  MapPin,
 } from "lucide-react";
-import AnimatedText from "../COMPONENT/AnimatedText.jsx";
-import "./InitiativePage.css";
+import "./BiogasCleanEnergy.css";
 
-const icons = {
-  book: BookOpen,
-  flame: Flame,
-  heart: HeartPulse,
-  house: House,
-  leaf: Leaf,
-  light: Lightbulb,
-  recycle: Recycle,
-  shield: ShieldCheck,
-  sprout: Sprout,
-  people: UsersRound,
-  hand: HandHeart,
-};
-
-function PageLink({ children, onClick, variant = "primary" }) {
-  const Icon = variant === "light" ? ArrowUpRight : ArrowRight;
+function InitiativeStrip({ heading }) {
+  if (!heading) return null;
   return (
-    <button className={`initiative-action initiative-action--${variant}`} type="button" onClick={onClick}>
-      <span>{children}</span>
-      <Icon size={17} aria-hidden="true" />
-    </button>
-  );
-}
-
-function InitiativeHero({ page }) {
-  return (
-    <section className={`initiative-hero initiative-hero--${page.key}`} aria-labelledby={`${page.key}-title`}>
-      <div
-        className="initiative-hero__photo"
-        role="img"
-        aria-label={page.heroAlt}
-        style={{ "--initiative-hero-image": `url("${page.heroImage}")` }}
-      />
-      <div className="initiative-hero__shade" />
-      <div className="initiative-hero__content">
-        <AnimatedText as="span" variant="underline" className="initiative-eyebrow initiative-eyebrow--light">
-          Synergy Organization <span aria-hidden="true">/</span> {page.title}
-        </AnimatedText>
-        <AnimatedText
-          as="h1"
-          id={`${page.key}-title`}
-          variant="word"
-          stagger={70}
-          highlightWords={page.highlightWords}
-          className="initiative-hero__title"
-        >
-          {page.headline}
-        </AnimatedText>
-        <AnimatedText as="p" variant="fade" delay={140} className="initiative-hero__summary">
-          {page.summary}
-        </AnimatedText>
-        <div className="initiative-hero__actions">
-          <PageLink onClick={() => document.getElementById(`${page.key}-purpose`)?.scrollIntoView({
-            behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth",
-          })}>
-            Explore Our Purpose
-          </PageLink>
-          <a className="initiative-hero__scroll" href={`#${page.key}-purpose`}>
-            <span>Discover the initiative</span><ArrowDown size={15} aria-hidden="true" />
-          </a>
-        </div>
-      </div>
-      <span className="initiative-hero__index" aria-hidden="true">{page.index} / 04</span>
-    </section>
-  );
-}
-
-function PageIntro({ page }) {
-  return (
-    <section className="initiative-intro initiative-section" id={`${page.key}-purpose`}>
-      <div className="initiative-intro__copy">
-        <AnimatedText as="span" variant="underline" className="initiative-eyebrow">{page.intro.eyebrow}</AnimatedText>
-        <AnimatedText as="h2" variant="line" className="initiative-heading">{page.intro.heading}</AnimatedText>
-        {page.intro.paragraphs.map((paragraph, index) => (
-          <AnimatedText as="p" variant="fade" delay={index * 80 + 80} className="initiative-copy" key={paragraph}>
-            {paragraph}
-          </AnimatedText>
-        ))}
-      </div>
-      <div className="initiative-intro__visual">
-        <img src={page.intro.image} alt={page.intro.imageAlt} loading="lazy" />
-        <span className="initiative-intro__image-label">{page.intro.imageLabel}</span>
-      </div>
-    </section>
-  );
-}
-
-function BenefitGrid({ page }) {
-  return (
-    <section className="initiative-benefits initiative-section" aria-labelledby={`${page.key}-benefits`}>
-      <div className="initiative-section__header">
-        <AnimatedText as="span" variant="underline" className="initiative-eyebrow">{page.benefits.eyebrow}</AnimatedText>
-        <AnimatedText as="h2" id={`${page.key}-benefits`} variant="word" className="initiative-heading">
-          {page.benefits.heading}
-        </AnimatedText>
-        <AnimatedText as="p" variant="fade" delay={90} className="initiative-copy">{page.benefits.intro}</AnimatedText>
-      </div>
-      <div className="initiative-benefit-grid">
-        {page.benefits.items.map((item, index) => {
-          const Icon = icons[item.icon];
-          return (
-            <article className="initiative-benefit" key={item.title}>
-              <span className="initiative-benefit__number">0{index + 1}</span>
-              <span className="initiative-benefit__icon"><Icon size={21} strokeWidth={1.6} aria-hidden="true" /></span>
-              <h3>{item.title}</h3>
-              <p>{item.description}</p>
-            </article>
-          );
-        })}
-      </div>
-      {page.benefits.note && <p className="initiative-note">{page.benefits.note}</p>}
-    </section>
-  );
-}
-
-function LearningLibrary({ page, onNavigate }) {
-  if (!page.learningLinks) return null;
-
-  return (
-    <section className="initiative-learning-library initiative-section" aria-labelledby={`${page.key}-learning-title`}>
-      <div className="initiative-learning-library__intro">
-        <AnimatedText as="span" variant="underline" className="initiative-eyebrow">Explore the subject</AnimatedText>
-        <AnimatedText as="h2" id={`${page.key}-learning-title`} variant="line" className="initiative-heading">
-          A closer look at biogas.
-        </AnimatedText>
-        <p>Four short guides explore biogas fundamentals, the digestion process, possible applications and general considerations.</p>
-      </div>
-      <div className="initiative-learning-library__links">
-        {page.learningLinks.map((item, index) => (
-          <button type="button" key={item.page} onClick={() => onNavigate(item.page)}>
-            <span className="initiative-learning-library__number">0{index + 1}</span>
-            <span>{item.label}</span>
-            <ArrowRight size={17} aria-hidden="true" />
-          </button>
-        ))}
-      </div>
-    </section>
-  );
-}
-
-function ApplicationsSection({ page }) {
-  if (!page.applications) return null;
-
-  return (
-    <section className="initiative-applications initiative-section" aria-labelledby={`${page.key}-applications-title`}>
-      <div className="initiative-section__header">
-        <AnimatedText as="span" variant="underline" className="initiative-eyebrow">{page.applications.eyebrow}</AnimatedText>
-        <AnimatedText as="h2" id={`${page.key}-applications-title`} variant="word" className="initiative-heading">
-          {page.applications.heading}
-        </AnimatedText>
-        <AnimatedText as="p" variant="fade" delay={90} className="initiative-copy">
-          {page.applications.intro}
-        </AnimatedText>
-      </div>
-      <div className="initiative-applications__grid">
-        {page.applications.items.map((item, index) => {
-          const Icon = icons[item.icon];
-          return (
-            <article className="initiative-application" key={item.title}>
-              <span className="initiative-application__number">0{index + 1}</span>
-              <span className="initiative-application__icon"><Icon size={20} strokeWidth={1.5} aria-hidden="true" /></span>
-              <h3>{item.title}</h3>
-              <p>{item.description}</p>
-            </article>
-          );
-        })}
-      </div>
-    </section>
-  );
-}
-
-function ProcessSection({ page }) {
-  return (
-    <section className="initiative-process initiative-section" aria-labelledby={`${page.key}-process-title`}>
-      <div className="initiative-section__header">
-        <AnimatedText as="span" variant="underline" className="initiative-eyebrow initiative-eyebrow--light">A simple process</AnimatedText>
-        <AnimatedText as="h2" id={`${page.key}-process-title`} variant="word" className="initiative-heading initiative-heading--light">
-          From organic matter to useful energy.
-        </AnimatedText>
-        <AnimatedText as="p" variant="fade" delay={90} className="initiative-copy initiative-copy--light">
-          A general overview of anaerobic digestion. Actual systems vary by design, feedstock and operating conditions.
-        </AnimatedText>
-      </div>
-      <ol className="initiative-process__steps">
-        {page.process.map((step, index) => {
-          const Icon = icons[step.icon];
-          return (
-            <li className="initiative-process__step" key={step.title}>
-              <span className="initiative-process__number">0{index + 1}</span>
-              <span className="initiative-process__icon"><Icon size={21} strokeWidth={1.5} aria-hidden="true" /></span>
-              <h3>{step.title}</h3>
-              <p>{step.description}</p>
-            </li>
-          );
-        })}
-      </ol>
-    </section>
-  );
-}
-
-function StorySection({ page }) {
-  const Icon = icons[page.story.icon];
-  return (
-    <section className={`initiative-story initiative-section initiative-story--${page.key}`}>
-      <div className="initiative-story__visual">
-        <img src={page.story.image} alt={page.story.imageAlt} loading="lazy" />
-        <span>{page.story.caption}</span>
-      </div>
-      <div className="initiative-story__copy">
-        <AnimatedText as="span" variant="underline" className="initiative-eyebrow">{page.story.eyebrow}</AnimatedText>
-        <AnimatedText as="h2" variant="line" className="initiative-heading">{page.story.heading}</AnimatedText>
-        <AnimatedText as="p" variant="fade" delay={90} className="initiative-copy">{page.story.description}</AnimatedText>
-        <blockquote>
-          <Icon size={21} strokeWidth={1.6} aria-hidden="true" />
-          <span>{page.story.quote}</span>
-        </blockquote>
-      </div>
-    </section>
-  );
-}
-
-function GallerySection({ page }) {
-  return (
-    <section className="initiative-gallery initiative-section" aria-labelledby={`${page.key}-gallery-title`}>
-      <div className="initiative-section__header">
-        <AnimatedText as="span" variant="underline" className="initiative-eyebrow">A closer look</AnimatedText>
-        <AnimatedText as="h2" id={`${page.key}-gallery-title`} variant="word" className="initiative-heading">
-          {page.gallery.heading}
-        </AnimatedText>
-        <p className="initiative-gallery__disclaimer">{page.gallery.disclaimer}</p>
-      </div>
-      <div className="initiative-gallery__grid">
-        {page.gallery.images.map((image, index) => (
-          <figure className={`initiative-gallery__image initiative-gallery__image--${index + 1}`} key={image.src}>
-            <img src={image.src} alt={image.alt} loading="lazy" />
-            <figcaption><span>0{index + 1}</span>{image.caption}</figcaption>
-          </figure>
-        ))}
-      </div>
-    </section>
-  );
-}
-
-function InitiativeCTA({ page, onNavigate }) {
-  return (
-    <section className={`initiative-cta initiative-cta--${page.key}`}>
-      <div
-        className="initiative-cta__image"
-        role="img"
-        aria-label={page.cta.imageAlt}
-        style={{ "--initiative-cta-image": `url("${page.cta.image}")` }}
-      />
-      <div className="initiative-cta__content">
-        <AnimatedText as="span" variant="underline" className="initiative-eyebrow initiative-eyebrow--light">Be part of the change</AnimatedText>
-        <AnimatedText as="h2" variant="word" className="initiative-heading initiative-heading--light">{page.cta.heading}</AnimatedText>
-        <p>{page.cta.description}</p>
-        <div className="initiative-cta__actions">
-          <PageLink onClick={() => onNavigate(page.cta.primaryPage)}>{page.cta.primary}</PageLink>
-          <PageLink variant="light" onClick={() => onNavigate(page.cta.secondaryPage)}>{page.cta.secondary}</PageLink>
-        </div>
-      </div>
-    </section>
+    <div className="bce-initiative-strip" aria-label={heading}>
+      <h2 className="bce-strip-heading">
+        <span className="bce-strip-animated-text">{heading}</span>
+      </h2>
+    </div>
   );
 }
 
 export default function InitiativePage({ page, onNavigate }) {
+  if (!page) {
+    return null;
+  }
+
+  const primaryPhoto = page?.photos?.primary || {
+    src: page?.heroImage,
+    caption: page?.heroAlt || page?.title,
+    stripHeading: page?.stripHeading || page?.editorialBanner?.headline || page?.title,
+  };
+  const fieldPhoto = page?.photos?.field || primaryPhoto;
+  const conclusionPhoto = page?.photos?.conclusion || fieldPhoto;
+
+  const leadText = page?.story?.lead || page?.summaryLead || page?.summary || "";
+
   return (
-    <div className={`initiative-page initiative-page--${page.key}`}>
-      <InitiativeHero page={page} onNavigate={onNavigate} />
-      <PageIntro page={page} />
-      {page.process && <ProcessSection page={page} />}
-      <LearningLibrary page={page} onNavigate={onNavigate} />
-      <ApplicationsSection page={page} />
-      <BenefitGrid page={page} />
-      <StorySection page={page} />
-      {page.gallery && <GallerySection page={page} />}
-      <InitiativeCTA page={page} onNavigate={onNavigate} />
-    </div>
+    <article className="bce-page" aria-labelledby="bce-main-heading">
+      {/* ==========================================================
+          1. EDITORIAL MASTHEAD
+          ========================================================== */}
+      <header className="bce-masthead">
+        <div className="bce-shell">
+          <div className="bce-masthead__kicker-row">
+            <div className="bce-masthead__left-nav">
+              <button
+                type="button"
+                className="bce-back-button"
+                onClick={() => onNavigate && onNavigate("home", "main-focus-areas")}
+                aria-label="Back to Initiatives"
+              >
+                &larr; Back to Initiatives
+              </button>
+              <nav className="bce-breadcrumbs" aria-label="Breadcrumbs">
+                <button
+                  type="button"
+                  className="bce-breadcrumb-link"
+                  onClick={() => onNavigate && onNavigate("home")}
+                >
+                  Home
+                </button>
+                <span className="bce-breadcrumb-separator">/</span>
+                <button
+                  type="button"
+                  className="bce-breadcrumb-link"
+                  onClick={() => onNavigate && onNavigate("home", "main-focus-areas")}
+                >
+                  Our Initiatives
+                </button>
+                <span className="bce-breadcrumb-separator">/</span>
+                <span className="bce-breadcrumb-current">{page.title}</span>
+              </nav>
+            </div>
+
+            <div className="bce-masthead__badge">
+              <span className="bce-masthead__index">
+                INITIATIVE {page.index || "01"} <span className="bce-masthead__index-divider">/</span> 05
+              </span>
+            </div>
+          </div>
+
+          <div className="bce-masthead__heading-group">
+            <span className="bce-category-tag">
+              {page.categoryTag || "SYNERGY ORGANISATION · RURAL SUSTAINABILITY INITIATIVE"}
+            </span>
+            <h1 id="bce-main-heading" className="bce-main-title">
+              {page.title}
+            </h1>
+          </div>
+
+          {page.metadata && (
+            <div className="bce-metadata-grid">
+              <div className="bce-metadata-item">
+                <span className="bce-metadata-label">
+                  <Compass size={13} aria-hidden="true" /> DOMAIN
+                </span>
+                <span className="bce-metadata-value">{page.metadata.domain}</span>
+              </div>
+              <div className="bce-metadata-item">
+                <span className="bce-metadata-label">
+                  <MapPin size={13} aria-hidden="true" /> ACTIVE REGION
+                </span>
+                <span className="bce-metadata-value">{page.metadata.activeRegion}</span>
+              </div>
+              <div className="bce-metadata-item">
+                <span className="bce-metadata-label">
+                  <Calendar size={13} aria-hidden="true" /> TIMELINE &amp; ROOTS
+                </span>
+                <span className="bce-metadata-value">{page.metadata.timeline}</span>
+              </div>
+            </div>
+          )}
+        </div>
+      </header>
+
+      {/* ==========================================================
+          2. CORE EDITORIAL STORY SPREAD (3-ROW ALTERNATING FORMAT)
+          ========================================================== */}
+      <section id="bce-editorial-story" className="bce-editorial-spread" aria-labelledby="bce-story-title">
+        <div className="bce-shell">
+          {/* Row 1: Intro Text (Left) + Primary Image (Right) */}
+          <div className="bce-editorial-row bce-editorial-row--row1">
+            <div className="bce-editorial-col-text">
+              <div className="bce-section-kicker">
+                <span className="bce-section-num">{page.story?.kickerNum || page.index || "01"}</span>
+                <span className="bce-section-tag">{page.story?.kickerTag || "EDITORIAL STORY & FIELD INITIATIVE"}</span>
+              </div>
+
+              <h2 id="bce-story-title" className="bce-story-heading">
+                {page.story?.title || page.headline || page.title}
+              </h2>
+
+              {leadText && (
+                <p className="bce-paragraph bce-paragraph--lead">
+                  {leadText}
+                </p>
+              )}
+            </div>
+
+            <div className="bce-editorial-col-media">
+              <figure className="bce-clean-media">
+                <img
+                  src={primaryPhoto.src}
+                  alt={primaryPhoto.caption || page.title}
+                  loading="eager"
+                />
+              </figure>
+              <InitiativeStrip heading={primaryPhoto.stripHeading || page.stripHeading || page.editorialBanner?.headline || page.title} />
+            </div>
+          </div>
+
+          {/* Row 2: Field Image (Left) + Subheadings & Content (Right) */}
+          <div className="bce-editorial-row bce-editorial-row--row2">
+            <div className="bce-editorial-col-media">
+              <figure className="bce-clean-media">
+                <img
+                  src={fieldPhoto.src}
+                  alt={fieldPhoto.caption || page.title}
+                  loading="lazy"
+                />
+              </figure>
+              <InitiativeStrip heading={fieldPhoto.stripHeading || fieldPhoto.fig || "ORGANIC BIO-SLURRY APPLICATION"} />
+            </div>
+
+            <div className="bce-editorial-col-text">
+              {page.story?.subheadings?.[0] && (
+                <h4 className="bce-subheading">{page.story.subheadings[0]}</h4>
+              )}
+              {page.story?.paragraphs?.[0] && (
+                <p className="bce-paragraph">{page.story.paragraphs[0]}</p>
+              )}
+
+              {page.story?.subheadings?.[1] && (
+                <h4 className="bce-subheading">{page.story.subheadings[1]}</h4>
+              )}
+              {page.story?.paragraphs?.[1] && (
+                <p className="bce-paragraph">{page.story.paragraphs[1]}</p>
+              )}
+
+              {page.story?.paragraphs?.slice(2).map((para, idx) => (
+                <p className="bce-paragraph" key={idx}>
+                  {para}
+                </p>
+              ))}
+            </div>
+          </div>
+
+          {/* Optional Feature Row (e.g. Row 3: Text Left + Media Right) */}
+          {page.featureRow && (
+            <div className="bce-editorial-row bce-editorial-row--row1 bce-editorial-row--feature">
+              <div className="bce-editorial-col-text">
+                {page.featureRow.subheading && (
+                  <h4 className="bce-subheading">{page.featureRow.subheading}</h4>
+                )}
+                {page.featureRow.paragraphs?.map((para, idx) => (
+                  <p className="bce-paragraph" key={idx}>
+                    {para}
+                  </p>
+                ))}
+              </div>
+
+              <div className="bce-editorial-col-media">
+                <figure className="bce-clean-media">
+                  <img
+                    src={page.featureRow.photo?.src}
+                    alt={page.featureRow.photo?.caption || page.title}
+                    loading="lazy"
+                  />
+                </figure>
+                <InitiativeStrip heading={page.featureRow.photo?.stripHeading || "AGRO-BIODIVERSITY & CLIMATE RESILIENCE"} />
+              </div>
+            </div>
+          )}
+
+          {/* Conclusion Row */}
+          {page.featureRow ? (
+            <div className="bce-editorial-row bce-editorial-row--row2 bce-editorial-row--conclusion">
+              <div className="bce-editorial-col-media">
+                <figure className="bce-clean-media">
+                  <img
+                    src={conclusionPhoto.src}
+                    alt={conclusionPhoto.caption || page.title}
+                    loading="lazy"
+                  />
+                </figure>
+                <InitiativeStrip heading={conclusionPhoto.stripHeading || conclusionPhoto.fig || "SMOKELESS COOKING & CLEAN FLAME"} />
+              </div>
+
+              <div className="bce-editorial-col-text bce-editorial-col-text--conclusion">
+                {page.conclusion && (
+                  <div className="bce-conclusion-block">
+                    <h4 className="bce-subheading">{page.conclusion.title || "Conclusion"}</h4>
+                    <p className="bce-paragraph">{page.conclusion.text}</p>
+                  </div>
+                )}
+                <div className="bce-conclusion-actions">
+                  <button
+                    type="button"
+                    className="bce-btn bce-btn--primary"
+                    onClick={() => onNavigate && onNavigate("donate")}
+                  >
+                    <span>Support This Initiative</span>
+                    <ArrowRight size={15} aria-hidden="true" />
+                  </button>
+                </div>
+              </div>
+            </div>
+          ) : (
+            <div className="bce-editorial-row bce-editorial-row--row3">
+              <div className="bce-editorial-col-text bce-editorial-col-text--conclusion">
+                {page.conclusion && (
+                  <div className="bce-conclusion-block">
+                    <h4 className="bce-subheading">{page.conclusion.title || "Conclusion"}</h4>
+                    <p className="bce-paragraph">{page.conclusion.text}</p>
+                  </div>
+                )}
+                <div className="bce-conclusion-actions">
+                  <button
+                    type="button"
+                    className="bce-btn bce-btn--primary"
+                    onClick={() => onNavigate && onNavigate("donate")}
+                  >
+                    <span>Support This Initiative</span>
+                    <ArrowRight size={15} aria-hidden="true" />
+                  </button>
+                </div>
+              </div>
+
+              <div className="bce-editorial-col-media">
+                <figure className="bce-clean-media">
+                  <img
+                    src={conclusionPhoto.src}
+                    alt={conclusionPhoto.caption || page.title}
+                    loading="lazy"
+                  />
+                </figure>
+                <InitiativeStrip heading={conclusionPhoto.stripHeading || conclusionPhoto.fig || "SMOKELESS COOKING & CLEAN FLAME"} />
+              </div>
+            </div>
+          )}
+        </div>
+      </section>
+    </article>
   );
 }

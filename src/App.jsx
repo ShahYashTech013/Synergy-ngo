@@ -32,6 +32,8 @@ import Impact from "./PAGES/Impact.jsx";
 import AuthPage from "./PAGES/AuthPage.jsx";
 import Donate from "./PAGES/Donate.jsx";
 import BiogasCleanEnergy from "./PAGES/BiogasCleanEnergy.jsx";
+import SustainableAgriculture from "./PAGES/SustainableAgriculture.jsx";
+import Environment from "./PAGES/Environment.jsx";
 import WomenEmpowerment from "./PAGES/WomenEmpowerment.jsx";
 import SkillDevelopment from "./PAGES/SkillDevelopment.jsx";
 import WhatWeDo from "./PAGES/WhatWeDo.jsx";
@@ -53,6 +55,10 @@ const pageRoutes = {
   "what-we-do": "/what-we-do",
   programmes: "/programmes",
   "initiative-biogas-clean-energy": "/initiatives/biogas-clean-energy",
+  "initiative-agriculture": "/initiatives/sustainable-agriculture",
+  "initiative-sustainable-agriculture": "/initiatives/sustainable-agriculture",
+  "initiative-environment": "/initiatives/environmental-campaign",
+  "initiative-environmental-campaign": "/initiatives/environmental-campaign",
   "initiative-women-empowerment": "/initiatives/women-empowerment",
   "initiative-skill-development": "/initiatives/skill-development",
   "biogas-understanding": "/biogas/understanding-biogas",
@@ -66,9 +72,6 @@ const pageRoutes = {
 
 const legacyInitiativeRedirects = {
   "/initiatives/smoke-free-homes": "clean-cooking",
-  "/initiatives/women-empowerment": "women-empowerment",
-  "/initiatives/skill-development": "skill-development",
-  "/initiatives/environmental-campaign": "environmental-campaign",
   "/initiatives/clean-energy": "clean-cooking",
   "/initiatives": "clean-cooking",
 };
@@ -916,6 +919,12 @@ function PublicWebsite() {
 
         {activePage === "initiative-biogas-clean-energy" && (
           <BiogasCleanEnergy onNavigate={navigatePage} />
+        )}
+        {(activePage === "initiative-agriculture" || activePage === "initiative-sustainable-agriculture") && (
+          <SustainableAgriculture onNavigate={navigatePage} />
+        )}
+        {(activePage === "initiative-environment" || activePage === "initiative-environmental-campaign") && (
+          <Environment onNavigate={navigatePage} />
         )}
         {activePage === "initiative-women-empowerment" && (
           <WomenEmpowerment onNavigate={navigatePage} />

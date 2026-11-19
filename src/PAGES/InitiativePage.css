@@ -155,6 +155,46 @@
   margin: 0 auto;
 }
 
+.initiative-hero__back-row {
+  margin-bottom: 22px;
+}
+
+.initiative-back-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.14);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  padding: 8px 18px;
+  border-radius: 999px;
+  font-family: "Times New Roman", Times, Georgia, serif;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+}
+
+.initiative-back-button:hover {
+  background: rgba(255, 255, 255, 0.28);
+  border-color: rgba(255, 255, 255, 0.7);
+  transform: translateX(-4px);
+  color: #ffffff;
+}
+
+.initiative-back-button span {
+  font-size: 16px;
+  transition: transform 0.2s ease;
+}
+
+.initiative-back-button:hover span {
+  transform: translateX(-2px);
+}
+
 .initiative-hero__summary {
   max-width: 600px;
   margin: 26px 0 0;

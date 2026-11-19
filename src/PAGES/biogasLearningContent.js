@@ -1,4 +1,4 @@
-import { assetUrl } from "../utils/assetUrl";
+import { assetUrl } from "../utils/assetUrl.js";
 
 const biogasPlant = assetUrl("/WhatsApp%20Image%202026-11-08%20at%203.21.33%20PM.jpeg");
 const ruralLandscape = assetUrl("/WhatsApp%20Image%202026-11-08%20at%203.21.40%20PM.jpeg");
